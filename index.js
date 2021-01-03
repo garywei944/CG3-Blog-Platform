@@ -26,7 +26,11 @@ express()
         
       res.redirect('/customerstatus.html');
   })
+  .post('/status', (req, res) => {
+      console.log(req.body);
 
+      res.redirect('/customerstatus.html');
+  })
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
 
