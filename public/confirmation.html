@@ -6,22 +6,39 @@
     </head>
     <body>
         <h1>Chez 326 - Order Confirmation</h1>
-        <h2>Customer Name</h2>
-        <div class=customer>Peter Klemperer</div>
-        <h2>Customer Address</h2>
-        <p>Please enter your delivery address.</p>
-        <div class=rightalign>
-            <label for="streetaddress">Street Address:</label>
-            <input type="text" name="streetaddress" id="streetaddress">
-        </div>
-        <div class=rightalign>
-            <label for="cityaddress">City, State:</label>
-            <input type="text" name="cityaddress" id="cityaddress">
-        </div>
-        <div>
-            <h2>Order</h2>
-            <p class=lightgrey>Chicken Fried Steak with Corn Bread, Green Beans, Baked Beans.</p>
-        </div>
-        <input type="submit">
+        <form action="/confirm" method="POST">
+            <h2>Customer Name</h2>
+            <div class=customer>
+                <div>
+                    <label for="first">First Name:</label>
+                    <input type="text" name="first" id="first" value="Peter" readonly>
+                </div>
+                <div>
+                    <label for="last">Last Name:</label>
+                    <input type="text" name="last" id="last" value="Klemperer" readonly>
+                </div>
+            </div>
+            <h2>Customer Address</h2>
+            <p>Please enter your delivery address.</p>
+            <div class=rightalign>
+                <label for="streetaddress">Street Address:</label>
+                <input type="text" name="streetaddress" id="streetaddress">
+            </div>
+            <div class=rightalign>
+                <label for="cityaddress">City, State:</label>
+                <input type="text" name="cityaddress" id="cityaddress">
+            </div>
+            <div>
+                <h2>Order</h2>
+                <label for="order">Order:</label>
+                <textarea type="text" name="order" id="order" rows="4" cols="25" readonly>Chicken Fried Steak with Corn Bread, Green Beans, Baked Beans.
+                </textarea>
+            </div>
+            <div>
+                <label for="time">Order Time:</label>
+                <input type="datetime-local" name="time" id="time" readonly>
+            </div>
+            <input type="submit">
+        </form>
     </body>
 </html>

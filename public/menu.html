@@ -3,6 +3,7 @@
     <link href="restaurant.css" rel="stylesheet">
     <meta charset="UTF-8">
     <title>Chez 326 Menu</title>
+    <script src="menuvalidate.js" defer></script>
     <body>
         <h1>Chez 326 Menu</h1>
         <p>
@@ -10,7 +11,7 @@
         </p>
 
 
-        <form>
+        <form action="/order" method="POST">
             <div class="customer">
                 <h2>Customer Name</h2>
                 <div>
@@ -28,17 +29,17 @@
             <div>
                 <div>
                     <img width=128px src="https://upload.wikimedia.org/wikipedia/commons/4/4b/Chicken_Fried_Steak.jpg"></img>
-                    <input type="radio" name="restaurants" value="CFS" id="cfs">
+                    <input type="radio" name="entree" value="CFS" id="cfs">
                     <label for="cfs">Chicken-Fried Steak</label>
                 </div>
                 <div>
                     <img width=128px src="https://upload.wikimedia.org/wikipedia/commons/6/6c/2019-10-04_%E2%80%93_45_Day_Dry_Aged_Reverse_Seared_Bone_In_Rib_Eye_04.jpg"></img>
-                    <input type="radio" name="restaurants" value="Ribeye" id="ribeye">
+                    <input type="radio" name="entree" value="Ribeye" id="ribeye">
                     <label for="ribeye">Ribeye Steak</label>
                 </div>
                 <div>
                     <img width=128px src="https://upload.wikimedia.org/wikipedia/commons/f/f1/BLT_sandwich_%281%29.jpg"></img>
-                    <input type="radio" name="restaurants" value="BLT" id="blt">
+                    <input type="radio" name="entree" value="BLT" id="blt">
                     <label for="blt">Bacon Lettuce & Tomato Sandwich</label>
                 </div>
             </div>
