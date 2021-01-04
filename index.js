@@ -67,7 +67,7 @@ express()
           let query_text = "INSERT INTO order_table (first_name, last_name, street_address, ";
           query_text += "city_address, food_order, order_time, order_status) ";
           query_text += "VALUE ('" + first_name + "', '" + last_name + "', '" + street_address + "', ";
-          query_text += city_state + "', " + order "', now(), 'Received') RETURNING id";
+          query_text += city_state + "', " + order + "', now(), 'Received') RETURNING id";
 
           console.log( "query_text => " + query_text);
 
