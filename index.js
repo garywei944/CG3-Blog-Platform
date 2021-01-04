@@ -78,6 +78,7 @@ express()
       
         console.log(results);
 
+        const order_status = results.order_status;
         const first_name = results.first_name;
         const last_name  = results.last_name;
         const street_address = results.street_address;
@@ -85,7 +86,8 @@ express()
         const order = results.food_order;
 
         let customer_info = {first: first_name, last: last_name, streetaddress: street_address,
-                             cityaddress: city_state, order: order, ordernumber: order_number};
+                             cityaddress: city_state, order: order, ordernumber: order_number,
+                             orderstatus: order_status};
 
         console.log( customer_info );
         
