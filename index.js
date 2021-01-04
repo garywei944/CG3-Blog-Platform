@@ -87,6 +87,8 @@ express()
         let customer_info = {first: first_name, last: last_name, streetaddress: street_address,
                              cityaddress: city_state, order: order, ordernumber: order_number};
 
+        console.log( customer_info );
+        
         res.render('pages/customerstatus', customer_info);
         client.release();
       } catch (err) {
