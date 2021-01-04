@@ -66,8 +66,9 @@ express()
   .get('/status', async (req, res) => {
       // replace first_name and everything from body with only the order number
       // the order number should be used to retrieve everything from the database.
+      console.log("beginning /status");
       const order_number = req.query.ordernumber;
-    
+     
       // retrieve order info from database, determined by ordernumber
       //
       try {
