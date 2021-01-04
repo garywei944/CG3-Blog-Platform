@@ -82,10 +82,11 @@ express()
               let customer_info = confirm_info;
               confirm_info.ordernumber = 1; 
               res.render('pages/customerstatus', customer_info);
-          } catch (err) {
+              client.release();
+           } catch (err) {
               console.error(err);
               res.send("Error " + err);
-          }
+           }
       } else {
           res.render('pages/confirmation', confirm_info);
       }
