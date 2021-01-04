@@ -44,7 +44,7 @@ express()
         res.render('pages/menu', menu_info);
       }
   })
-  .post('/confirm', (req, res) => {
+  .post('/confirm', async (req, res) => {
       const first_name = req.body.first;
       const last_name = req.body.last;
       const street_address = req.body.streetaddress;
@@ -71,11 +71,21 @@ express()
 
           console.log( "query_text => " + query_text);
 
-          const order_number = 1; 
-          // TODO with the new order number, get the appropriate customer info
-          let customer_info = confirm_info;
-          confirm_info.ordernumber = 1; 
-          res.render('pages/customerstatus', customer_info);
+          try {
+              const client = await pool.connect();
+              const result = await client.query(query_text);
+
+              console.log(result);
+
+              const order_number = 1; 
+              // TODO with the new order number, get the appropriate customer info
+              let customer_info = confirm_info;
+              confirm_info.ordernumber = 1; 
+              res.render('pages/customerstatus', customer_info);
+          } catch (err) {
+              console.error(err);
+              res.send("Error " + err);
+          }
       } else {
           res.render('pages/confirmation', confirm_info);
       }
