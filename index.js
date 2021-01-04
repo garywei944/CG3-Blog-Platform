@@ -74,15 +74,15 @@ express()
       try {
         const client = await pool.connect();
         const result = await client.query('SELECT * FROM order_table WHERE id = ' + order_number);
-        const results = { 'results': (result) ? result.rows : null};
+        const results = { 'results': (result) ? result.rows[0] : null};
       
         console.log(results);
 
-        const first_name = req.body.first;
-        const last_name = req.body.last;
-        const street_address = req.body.streetaddress;
-        const city_state = req.body.cityaddress;
-        const order = req.body.order;
+        const first_name = results.first_name;
+        const last_name  = results.last_name;
+        const street_address = results.street_address;
+        const city_state     = results.city_address;
+        const order = results.food_order;
 
         let customer_info = {first: first_name, last: last_name, streetaddress: street_address,
                              cityaddress: city_state, order: order, ordernumber: order_number};
