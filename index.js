@@ -77,7 +77,7 @@ express()
 
               console.log(result);
 
-              const order_number = 1; 
+              const order_number = (result) ? result.rows[0].id : null; 
               // TODO with the new order number, get the appropriate customer info
               let customer_info = confirm_info;
               confirm_info.ordernumber = 1; 
