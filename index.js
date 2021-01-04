@@ -63,7 +63,7 @@ express()
       }
   })
   // /status is the customer facing status page
-  .get('/status', (req, res) => {
+  .get('/status', async (req, res) => {
       // replace first_name and everything from body with only the order number
       // the order number should be used to retrieve everything from the database.
       const order_number = req.query.ordernumber;
