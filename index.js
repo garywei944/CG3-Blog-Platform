@@ -62,6 +62,7 @@ express()
           res.render('pages/confirmation', confirm_info);
       }
   })
+  // /status is the customer facing status page
   .get('/status', (req, res) => {
       // replace first_name and everything from body with only the order number
       // the order number should be used to retrieve everything from the database.
@@ -81,6 +82,7 @@ express()
 
       res.render('pages/customerstatus', customer_info);
   })
+  // /db is a debugging view into the complete order_table database table
   .get('/db', async (req, res) => {
     try {
       const client = await pool.connect();
@@ -95,6 +97,7 @@ express()
   })
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
+// server side validation for the menu page submissions
 function validateMenu(first_name, last_name, entree, sideList) {
     let valid = false;
 
@@ -108,6 +111,7 @@ function validateMenu(first_name, last_name, entree, sideList) {
     return valid;
 }
 
+// server side validaiton for the confirm page submissions
 function validateConfirm(first_name, last_name, street_address, city_state, order) {
     let valid = false;
 
@@ -122,6 +126,8 @@ function validateConfirm(first_name, last_name, street_address, city_state, orde
     return valid;
 }
 
+// build a single string formatted order from the 
+// entree and sides
 function getOrderText(entree, sideList) {
     order = entree;
 
@@ -131,6 +137,8 @@ function getOrderText(entree, sideList) {
     return order;
 }
 
+// convert the item's buttons into strings
+// for each of the side dishes
 function getSides(body) {
     sides = [];
     
