@@ -74,7 +74,7 @@ express()
       try {
         const client = await pool.connect();
         const result = await client.query('SELECT * FROM order_table WHERE id = ' + order_number);
-        const results = { 'results': (result) ? result.rows[0] : null};
+        const results = (result) ? result.rows[0] : null;
       
         console.log(results);
 
