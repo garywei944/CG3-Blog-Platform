@@ -69,18 +69,29 @@ express()
       const order_number = req.query.ordernumber;
     
       // retrieve order info from database, determined by ordernumber
-      const first_name = req.body.first;
-      const last_name = req.body.last;
-      const street_address = req.body.streetaddress;
-      const city_state = req.body.cityaddress;
-      const order = req.body.order;
+      //
+      try {
+        const client = await pool.connect();
+        const result = await client.query('SELECT * FROM order_table');
+        const results = { 'results': (result) ? result.rows : null};
+      
+        console.log(results);
 
-      let customer_info = {first: first_name, last: last_name, streetaddress: street_address,
-                          cityaddress: city_state, order: order, ordernumber: order_number};
+        const first_name = req.body.first;
+        const last_name = req.body.last;
+        const street_address = req.body.streetaddress;
+        const city_state = req.body.cityaddress;
+        const order = req.body.order;
 
-      console.log(customer_info);
+        let customer_info = {first: first_name, last: last_name, streetaddress: street_address,
+                             cityaddress: city_state, order: order, ordernumber: order_number};
 
-      res.render('pages/customerstatus', customer_info);
+        res.render('pages/customerstatus', customer_info);
+        client.release();
+      } catch (err) {
+        console.error(err);
+        res.send("Error " + err);
+      }
   })
   // /db is a debugging view into the complete order_table database table
   .get('/db', async (req, res) => {
