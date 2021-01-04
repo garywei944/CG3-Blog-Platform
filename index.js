@@ -55,6 +55,24 @@ express()
                           cityaddress: city_state, order: order};
         
       if (validateConfirm(first_name, last_name, street_address, city_state, order)) {
+          // TODO push the new information to the database
+          //      and get the result for the new order number
+          //
+          // example insert
+          // INSERT INTO order_table (first_name, last_name, street_address, 
+          //                          city_address, food_order, order_time, order_status)
+          // VALUES ('Hope', 'Dog', '12 Street St', 'Northampton, MA', 
+          //         'Fake order foods 4', now(), 'Received') 
+          // RETURNING id;
+          let query_text = "INSERT INTO order_table (first_name, last_name, street_address, ";
+          query_text += "city_address, food_order, order_time, order_status) ";
+          query_text += "VALUE ('" + first_name + "', '" + last_name + "', '" + street_address + "', ";
+          query_text += city_state + "', " + order "', now(), 'Received') RETURNING id";
+
+          console.log( "query_text => " + query_text);
+
+          const order_number = 1; 
+          // TODO with the new order number, get the appropriate customer info
           let customer_info = confirm_info;
           confirm_info.ordernumber = 1; 
           res.render('pages/customerstatus', customer_info);
@@ -66,7 +84,6 @@ express()
   .get('/status', async (req, res) => {
       // replace first_name and everything from body with only the order number
       // the order number should be used to retrieve everything from the database.
-      console.log("beginning /status");
       const order_number = req.query.ordernumber;
      
       // retrieve order info from database, determined by ordernumber
@@ -76,8 +93,7 @@ express()
         const result = await client.query('SELECT * FROM order_table WHERE id = ' + order_number);
         const results = (result) ? result.rows[0] : null;
       
-        console.log(results);
-
+        // assemble the local variables for the order status
         const order_status = results.order_status;
         const first_name = results.first_name;
         const last_name  = results.last_name;
@@ -89,8 +105,6 @@ express()
                              cityaddress: city_state, order: order, ordernumber: order_number,
                              orderstatus: order_status};
 
-        console.log( customer_info );
-        
         res.render('pages/customerstatus', customer_info);
         client.release();
       } catch (err) {
