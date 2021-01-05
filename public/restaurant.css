@@ -73,4 +73,11 @@ input[value="Delivered"] {
    cursor: pointer;
 }
 
+table.serverstatus {
+    width: 100%;
+}
+
+table td, table th { 
+    overflow-wrap: anywhere; 
+}
 
