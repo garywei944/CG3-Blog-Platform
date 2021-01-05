@@ -138,17 +138,15 @@ express()
   })
   .get('/service', async (req, res) => {
     try {
+      // query the db for all the orders
       const client = await pool.connect();
       const result = await client.query('SELECT * FROM order_table');
       const results = (result) ? result.rows : null;
 
-      console.log(results)
-
-      // format the db results into orders 
+      // format the db results into orders for rendering
       let orders = [];
       for( let i=0; i<results.length; i++ ) {
           let o = results[i];
-          console.log(o);
           orders.push({ timestamp: o.order_time,
                         order: o.food_order,
                         id: o.id,
@@ -159,8 +157,7 @@ express()
                         orderstatus: o.order_status});
       }
 
-      console.log(orders);
-
+      // render the page with the orders
       res.render('pages/servicestatus', {orders: orders}); 
       client.release();
     } catch (err) { console.error(err); res.send("Error " + err);
