@@ -77,10 +77,24 @@ express()
 
               console.log(result);
 
+              // get the new ID number returned from the INSERT query
               const order_number = (result) ? result.rows[0].id : null; 
-              // TODO with the new order number, get the appropriate customer info
-              let customer_info = confirm_info;
-              confirm_info.ordernumber = 1; 
+
+              // with the new order number, get the appropriate customer info
+              const select_result = await client.query('SELECT * FROM order_table WHERE id = ' + order_number);
+              const results = (select_result) ? select_result.rows[0] : null;
+
+              const order_status = results.order_status;
+              const first_name = results.first_name;
+              const last_name  = results.last_name;
+              const street_address = results.street_address;
+              const city_state     = results.city_address;
+              const order = results.food_order;
+
+              let customer_info = {first: first_name, last: last_name, streetaddress: street_address,
+                                   cityaddress: city_state, order: order, ordernumber: order_number,
+                                   orderstatus: order_status};
+
               res.render('pages/customerstatus', customer_info);
               client.release();
            } catch (err) {
