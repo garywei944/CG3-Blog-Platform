@@ -146,15 +146,17 @@ express()
       let orders = [];
 
       // format the db results into orders 
-      orders.push({ timestamp: "",
-                    order: "",
-                    id: "",
-                    first: "",
-                    last: "",
-                    streetaddress: "test",
-                    cityaddress: "test,MA",
-                    orderstatus: "Received"});
-                   
+      for( let o in results ) {
+          orders.push({ timestamp: o.order_time,
+                        order: o.food_order,
+                        id: o.id,
+                        first: o.first_name,
+                        last: o.last_name, 
+                        streetaddress: o.street_address,
+                        cityaddress: o.city_address,
+                        orderstatus: o.order_status});
+      }
+                       
 
       res.render('pages/servicestatus', {orders: orders}); 
       client.release();
