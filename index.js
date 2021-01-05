@@ -166,13 +166,11 @@ express()
   })
   .post('/service', async (req, res) => {
     try {
-      const client = await pool.connect();
-
       const order_number = req.body.id;
 
       // GET THE CURRENT ORDER_STATUS
+      const client = await pool.connect();
       const old_status_result = await client.query('SELECT order_status FROM order_table WHERE id=' + order_number);
-      console.log(old_status_result.rows[0].order_status);
     
       old_status = old_status_result.rows[0].order_status;
 
