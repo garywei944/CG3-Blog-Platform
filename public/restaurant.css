@@ -74,6 +74,7 @@ input[value="Delivered"] {
 }
 
 table.serverstatus {
+    table-layout: fixed;
     width: 100%;
 }
 
