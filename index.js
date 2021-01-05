@@ -181,6 +181,16 @@ express()
       // 'Cooking' -> 'Out For Delivery'
       // 'Out For Delivery' -> 'Delivered'
       // 'Delivered' -> 'Delivered'
+      let new_status = "";
+      if (old_status === 'Received')
+        new_status = 'Cooking';
+      else if (old_status === 'Cooking')
+        new_status = 'Out For Delivery';
+      else 
+        new_status = 'Delivered';
+
+      // update the db with the new status
+      await client.query("UPDATE order_table set order_status='" + new_status + "' where id=" + order_number);
 
       // query the db for all the orders
       const order_result = await client.query('SELECT * FROM order_table');
