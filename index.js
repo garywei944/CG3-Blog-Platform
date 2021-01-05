@@ -157,6 +157,8 @@ express()
                         orderstatus: o.order_status});
       }
 
+      console.log(orders);
+
       res.render('pages/servicestatus', {orders: orders}); 
       client.release();
     } catch (err) { console.error(err); res.send("Error " + err);
