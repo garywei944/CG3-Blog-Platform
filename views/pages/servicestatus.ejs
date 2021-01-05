@@ -22,7 +22,7 @@
                 <form action="/service" method="PUT">
                 <td><%= o.timestamp %></td>
                 <td><%= o.order %></td>
-                <td><input type="number" name="id" value="<%= o.id %>"></td>
+                <td><input type="number" name="id" value="<%= o.id %>" readonly></td>
                 <td><%= o.first %> <%= o.last %></td>
                 <td><%= o.streetaddress %><br><%= o.cityaddress %></td>
                     <td><input type="submit" value="<%= o.orderstatus %>"></td>
