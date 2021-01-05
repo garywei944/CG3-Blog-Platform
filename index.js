@@ -45,18 +45,18 @@ express()
       }
   })
   .post('/confirm', async (req, res) => {
-      const first_name = req.body.first;
-      const last_name = req.body.last;
+      const first_name     = req.body.first;
+      const last_name      = req.body.last;
       const street_address = req.body.streetaddress;
-      const city_state = req.body.cityaddress;
-      const order = req.body.order;
+      const city_state     = req.body.cityaddress;
+      const order          = req.body.order;
 
       let confirm_info = {first: first_name, last: last_name, streetaddress: street_address,
                           cityaddress: city_state, order: order};
         
       if (validateConfirm(first_name, last_name, street_address, city_state, order)) {
-          // TODO push the new information to the database
-          //      and get the result for the new order number
+          // Push the new information to the database
+          // and get the result for the new order number
           //
           // example insert
           // INSERT INTO order_table (first_name, last_name, street_address, 
@@ -73,9 +73,9 @@ express()
 
           try {
               const client = await pool.connect();
-              const result = await client.query(query_text);
 
-              console.log(result);
+              // INSERT the new order information
+              const result = await client.query(query_text);
 
               // get the new ID number returned from the INSERT query
               const order_number = (result) ? result.rows[0].id : null; 
@@ -84,12 +84,12 @@ express()
               const select_result = await client.query('SELECT * FROM order_table WHERE id = ' + order_number);
               const results = (select_result) ? select_result.rows[0] : null;
 
-              const order_status = results.order_status;
-              const first_name = results.first_name;
-              const last_name  = results.last_name;
+              const order_status   = results.order_status;
+              const first_name     = results.first_name;
+              const last_name      = results.last_name;
               const street_address = results.street_address;
               const city_state     = results.city_address;
-              const order = results.food_order;
+              const order          = results.food_order;
 
               let customer_info = {first: first_name, last: last_name, streetaddress: street_address,
                                    cityaddress: city_state, order: order, ordernumber: order_number,
@@ -119,12 +119,12 @@ express()
         const results = (result) ? result.rows[0] : null;
       
         // assemble the local variables for the order status
-        const order_status = results.order_status;
-        const first_name = results.first_name;
-        const last_name  = results.last_name;
+        const order_status   = results.order_status;
+        const first_name     = results.first_name;
+        const last_name      = results.last_name;
         const street_address = results.street_address;
         const city_state     = results.city_address;
-        const order = results.food_order;
+        const order          = results.food_order;
 
         let customer_info = {first: first_name, last: last_name, streetaddress: street_address,
                              cityaddress: city_state, order: order, ordernumber: order_number,
