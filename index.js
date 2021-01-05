@@ -143,10 +143,11 @@ express()
       const results = (result) ? result.rows : null;
 
       console.log(results)
-      let orders = [];
 
       // format the db results into orders 
-      for( let o in results ) {
+      let orders = [];
+      for( let i=0; i<results.length; i++ ) {
+          let o = results[i];
           console.log(o);
           orders.push({ timestamp: o.order_time,
                         order: o.food_order,
