@@ -147,6 +147,7 @@ express()
 
       // format the db results into orders 
       for( let o in results ) {
+          console.log(o);
           orders.push({ timestamp: o.order_time,
                         order: o.food_order,
                         id: o.id,
