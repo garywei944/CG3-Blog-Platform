@@ -145,7 +145,7 @@ express()
       console.log(results)
       let orders = [];
 
-      // format the db results into orders
+      // format the db results into orders 
       orders.push({ timestamp: "",
                     order: "",
                     id: "",
@@ -156,11 +156,9 @@ express()
                     orderstatus: "Received"});
                    
 
-      res.render('pages/servicestatus', orders); 
+      res.render('pages/servicestatus', {orders: orders}); 
       client.release();
-    } catch (err) {
-      console.error(err);
-      res.send("Error " + err);
+    } catch (err) { console.error(err); res.send("Error " + err);
     }
 
   })
