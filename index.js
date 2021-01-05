@@ -164,7 +164,7 @@ express()
         console.error(err); res.send("Error " + err);
     }
   })
-  .put('/service', async (req, res) => {
+  .post('/service', async (req, res) => {
     try {
       const client = await pool.connect();
 

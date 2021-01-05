@@ -19,7 +19,7 @@
             </tr>
             <% orders.forEach(function(o) { %>
             <tr>
-                <form action="/service" method="PUT">
+                <form action="/service" method="POST">
                 <td><%= o.timestamp %></td>
                 <td><%= o.order %></td>
                 <td><input type="number" name="id" value="<%= o.id %>" readonly></td>
