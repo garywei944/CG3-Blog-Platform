@@ -80,7 +80,6 @@ table.serverstatus {
 
 table td { 
     overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+    white-space: normal;
 }
 
