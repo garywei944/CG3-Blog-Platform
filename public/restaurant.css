@@ -78,6 +78,6 @@ table.serverstatus {
 }
 
 table td, table th { 
-    overflow-wrap: anywhere; 
+    overflow-wrap: break-word; 
 }
 
