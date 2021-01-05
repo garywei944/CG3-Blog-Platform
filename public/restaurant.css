@@ -78,7 +78,7 @@ table.serverstatus {
     width: 100%;
 }
 
-table td, table th { 
+table td { 
     overflow-wrap: break-word; 
 }
 
