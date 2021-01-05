@@ -26,12 +26,17 @@ express()
   })
   .post('/order', (req, res) => { */
 
-      const first_name = req.query.first;
-      const last_name = req.query.last;
-        
-      let entree = req.query.entree;
-      let sideList = getSides(req.query);
-      let order = getOrderText(entree, sideList);
+      const first_name = (req.query.first) ? req.query.first : "";
+      const last_name = (req.query.last) ? req.query.last : "";
+      
+      let entree = "";
+      let sideList = ""
+      let order = "";
+      if (req.query.entree) {
+        entree = req.query.entree;
+        sideList = getSides(req.query);
+        order = getOrderText(entree, sideList);
+      }
       
       let menu_info = {first: first_name, last: last_name,
                        order: order}
@@ -40,7 +45,7 @@ express()
         let confirm_info = menu_info;
         confirm_info.streetaddress = "";
         confirm_info.cityaddress = "";
-        console.log(confirm_info);
+
         res.render('pages/confirmation', confirm_info);
       } else {
         res.render('pages/menu', menu_info);
@@ -70,8 +75,6 @@ express()
           query_text += "city_address, food_order, order_time, order_status) ";
           query_text += "VALUES ('" + first_name + "', '" + last_name + "', '" + street_address + "', '";
           query_text += city_state + "', '" + order + "', now(), 'Received') RETURNING id;";
-
-          console.log( "query_text => " + query_text);
 
           try {
               const client = await pool.connect();
@@ -154,6 +157,10 @@ express()
   })
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
+
+/*  HELPER FUNCTIONS BELOW 
+ */
+
 // server side validation for the menu page submissions
 function validateMenu(first_name, last_name, entree, sideList) {
     let valid = false;
@@ -161,7 +168,7 @@ function validateMenu(first_name, last_name, entree, sideList) {
     if (first_name.length != 0 &&
         last_name.length != 0 && 
         entree != undefined && 
-        sides.length === 3) {
+        sideList.length === 3) {
         valid = true;
     }
 
