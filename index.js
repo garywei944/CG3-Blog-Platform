@@ -172,7 +172,9 @@ express()
 
       // GET THE CURRENT ORDER_STATUS
       const old_status_result = await client.query('SELECT order_status FROM order_table WHERE id=' + order_number);
-      console.log(old_status_result.rows);
+      console.log(old_status_result.rows[0].order_status);
+    
+      old_status = old_status_result.rows[0].order_status;
 
       // EXAMPLE UPDATE
       // update order_table set order_status='Cooking' where id=1;
