@@ -137,7 +137,32 @@ express()
       }
   })
   .get('/service', async (req, res) => {
-    res.render('pages/servicestatus'); 
+    try {
+      const client = await pool.connect();
+      const result = await client.query('SELECT * FROM order_table');
+      const results = (result) ? result.rows : null;
+
+      console.log(results)
+      let orders = [];
+
+      // format the db results into orders
+      orders.push({ timestamp: "",
+                    order: "",
+                    id: "",
+                    first: "",
+                    last: "",
+                    streetaddress: "test",
+                    cityaddress: "test,MA",
+                    orderstatus: "Received"});
+                   
+
+      res.render('pages/servicestatus', orders); 
+      client.release();
+    } catch (err) {
+      console.error(err);
+      res.send("Error " + err);
+    }
+
   })
   // /db is a debugging view into the complete order_table database table
   .get('/db', async (req, res) => {
