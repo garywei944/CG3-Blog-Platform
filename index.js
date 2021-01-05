@@ -20,12 +20,6 @@ express()
     res.sendFile(path.join(__dirname + '/index.html'));
   })
   .get('/order', (req, res) => {
-/*
-      let menu_info = {first: "", last: "", order: ""};
-      res.render('pages/menu', menu_info);
-  })
-  .post('/order', (req, res) => { */
-
       const first_name = (req.query.first) ? req.query.first : "";
       const last_name = (req.query.last) ? req.query.last : "";
       
@@ -141,6 +135,9 @@ express()
         console.error(err);
         res.send("Error " + err);
       }
+  })
+  .get('/service', async (req, res) => {
+    res.render('pages/servicestatus'); 
   })
   // /db is a debugging view into the complete order_table database table
   .get('/db', async (req, res) => {
