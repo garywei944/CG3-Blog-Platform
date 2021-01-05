@@ -156,7 +156,6 @@ express()
                         cityaddress: o.city_address,
                         orderstatus: o.order_status});
       }
-                       
 
       res.render('pages/servicestatus', {orders: orders}); 
       client.release();

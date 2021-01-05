@@ -17,16 +17,16 @@
                 <th>Address</th>
                 <th>Status</th>
             </tr>
-            <tr>
             <% orders.forEach(function(o) { %>
+            <tr>
                 <td><%= o.timestamp %></td>
                 <td><%= o.order %></td>
                 <td><%= o.id %></td>
                 <td><%= o.first %> <%= o.last %></td>
                 <td><%= o.streetaddress %><br><%= o.cityaddress %></td>
                 <td><input type="submit" value="<%= o.orderstatus %>"></td>
-            <% }); %>
             </tr>
+            <% }); %>
         </table>
 
     </body>
