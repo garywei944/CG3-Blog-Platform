@@ -160,10 +160,50 @@ express()
       // render the page with the orders
       res.render('pages/servicestatus', {orders: orders}); 
       client.release();
-    } catch (err) { console.error(err); res.send("Error " + err);
+    } catch (err) { 
+        console.error(err); res.send("Error " + err);
     }
-
   })
+  .put('/service', async (req, res) => {
+    try {
+      const client = await pool.connect();
+
+      console.log(req);
+
+      // EXAMPLE UPDATE
+      // update order_table set order_status='Cooking' where id=1;
+      // 
+      // 'Received' -> 'Cooking'
+      // 'Cooking' -> 'Out For Delivery'
+      // 'Out For Delivery' -> 'Delivered'
+      // 'Delivered' -> 'Delivered'
+
+      // query the db for all the orders
+      const order_result = await client.query('SELECT * FROM order_table');
+      const results = (order_result) ? order_result.rows : null;
+
+      // format the db results into orders for rendering
+      let orders = [];
+      for( let i=0; i<results.length; i++ ) {
+          let o = results[i];
+          orders.push({ timestamp: o.order_time,
+                        order: o.food_order,
+                        id: o.id,
+                        first: o.first_name,
+                        last: o.last_name, 
+                        streetaddress: o.street_address,
+                        cityaddress: o.city_address,
+                        orderstatus: o.order_status});
+      }
+
+      // render the page with the orders
+      res.render('pages/servicestatus', {orders: orders}); 
+      client.release();
+    } catch (err) { 
+        console.error(err); res.send("Error " + err);
+    }
+  })
+
   // /db is a debugging view into the complete order_table database table
   .get('/db', async (req, res) => {
     try {
