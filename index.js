@@ -20,19 +20,21 @@ express()
     res.sendFile(path.join(__dirname + '/index.html'));
   })
   .get('/order', (req, res) => {
+/*
       let menu_info = {first: "", last: "", order: ""};
-      console.log(menu_info);
       res.render('pages/menu', menu_info);
   })
-  .post('/order', (req, res) => {
-      const first_name = req.body.first;
-      const last_name = req.body.last;
-      let entree = req.body.entree;
-      let sideList = getSides(req.body);
+  .post('/order', (req, res) => { */
+
+      const first_name = req.query.first;
+      const last_name = req.query.last;
+        
+      let entree = req.query.entree;
+      let sideList = getSides(req.query);
       let order = getOrderText(entree, sideList);
       
-      menu_info = {first: first_name, last: last_name,
-                   order: order}
+      let menu_info = {first: first_name, last: last_name,
+                       order: order}
 
       if (validateMenu(first_name, last_name, entree, sideList)) {
         let confirm_info = menu_info;
