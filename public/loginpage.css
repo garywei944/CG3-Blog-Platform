@@ -1,0 +1,113 @@
+body{
+  margin: 0;
+  padding: 0;
+}
+
+#top{
+  background-color: #1e90ff;
+  border: 1px solid black;
+  box-sizing: border-box;
+  width: 100vw;
+  height: 10vh;
+}
+
+.right{
+  float: right;
+  margin-right: 10px;
+}
+
+#home{
+  margin-left: 100px;
+  text-decoration: none;
+  font-size: 40px;
+
+}
+
+#newpost{
+  float: right;
+  width: 50px;
+  margin-right: 50px;
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+#circle{
+  color: gray;
+  border-radius: 50%;
+  margin-top: 10px;
+  height: 40px;
+  width: 40px;
+}
+
+
+input[type=text], input[type=password] {
+  width: 300px;
+  padding: 13px 21px;
+  display: block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  margin: auto;
+}
+
+[type=submit]{
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  border: none;
+  cursor: pointer;
+  width: 300px;
+  display: block;
+  margin: auto;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+}
+
+img.avatar {
+  width: 200px;
+  border-radius: 50%;
+}
+
+.container {
+  padding: 16px;
+}
+
+.inputtext{
+  margin: 10px;
+  display: block;
+  text-align: center;
+}
+
+#inputblock{
+  margin-bottom: 20px;
+}
+
+#submitblock{
+  margin-top: 40px;
+}
+
+#bottom{
+  height: 100vh;
+  border: 1px solid black;
+  background-color: #1e90ff;
+  box-sizing: border-box;
+}
+
+#login{
+  background-color: rgba(255, 255, 255, 0.6);;
+  box-sizing: border-box;
+  width: 400px;
+  text-align: center;
+  margin: auto;
+}
+
+h1{
+  position: relative;
+  top: 10px;
+}
