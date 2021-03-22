@@ -81,7 +81,10 @@ img.avatar {
 .inputtext{
   margin: 10px;
   display: block;
-  text-align: center;
+  /* text-align: center; */
+  position: relative;
+  left: -110px;
+  top: 5px;
 }
 
 #inputblock{
@@ -112,7 +115,13 @@ h1{
   top: 10px;
 }
 
+<<<<<<< HEAD
 /*CSS for Sign Up botton*/
 #signup{
   text-decoration: none;
+=======
+#mesgblock{
+  position: relative;
+  color: rgb(255, 68, 68);
+>>>>>>> 4d9e21a1c563b42d3e11459ca96fe0e6005b4426
 }
