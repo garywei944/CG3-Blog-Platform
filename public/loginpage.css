@@ -111,3 +111,8 @@ h1{
   position: relative;
   top: 10px;
 }
+
+/*CSS for Sign Up botton*/
+#signup{
+  text-decoration: none;
+}
