@@ -81,7 +81,10 @@ img.avatar {
 .inputtext{
   margin: 10px;
   display: block;
-  text-align: center;
+  /* text-align: center; */
+  position: relative;
+  left: -110px;
+  top: 5px;
 }
 
 #inputblock{
@@ -110,4 +113,9 @@ img.avatar {
 h1{
   position: relative;
   top: 10px;
+}
+
+#mesgblock{
+  position: relative;
+  color: rgb(255, 68, 68);
 }
