@@ -92,7 +92,6 @@ img.avatar {
 }
 
 #submitblock{
-  margin-top: 40px;
 }
 
 #bottom{
@@ -117,9 +116,21 @@ h1{
 
 #mesgblock{
   position: relative;
+  padding-top: 5px;
+  padding-bottom: 5px;
   color: rgb(255, 68, 68);
 }
 
 #signup {
+  font-size: 85%;
+  position: relative;
+  color:rgba(73, 73, 73, 0.6);
   text-decoration: none;
+  left: 68px;
+  top: 5px;
+}
+
+#loginMesg{
+  position: relative;
+  top:-7px;
 }
