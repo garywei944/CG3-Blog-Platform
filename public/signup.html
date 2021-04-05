@@ -3,6 +3,8 @@
   <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/signup.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="js/signup.js"></script>
   </head>
 
 	<form action="action_page.php" style="border:1px solid #ccc">
@@ -11,17 +13,18 @@
     <p>Please fill in this form to create an account.</p>
     <hr>
 
-    <label id="email" for="email"><b>Email</b></label>
-    <input type="text" placeholder="Enter Email" name="email" required>
+    <label for="email"><b>Email</b></label>
+    <input id="email" type="text" placeholder="Enter Email" name="email" required>
 
-    <label id="psw" for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
+    <label for="psw"><b>Password</b></label>
+    <p id="passwordWarning"></p>
+    <input id="psw" type="password" placeholder="Enter Password" name="psw" required>
 
-    <label id="psw-repeat" for="psw-repeat"><b>Repeat Password</b></label>
-    <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+    <label for="psw-repeat"><b>Repeat Password</b></label>
+    <input id="psw-repeat" type="password" placeholder="Repeat Password" name="psw-repeat" required>
 
-    <label id="checkbox">
-      <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+    <label>
+      <input id="checkbox" type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
     </label>
 
 
