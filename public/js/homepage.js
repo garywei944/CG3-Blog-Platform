@@ -19,7 +19,7 @@ $(document).ready(function (){
     });
 
     $("#home").click(function (){
-        window.location.href = 'https://stark-tor-10041.herokuapp.com/index.html';
+        window.location.href = 'https://stark-tor-10041.herokuapp.com/homepage2.html';
     });
 
     $(".list").click(function (){
