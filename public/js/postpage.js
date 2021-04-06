@@ -10,9 +10,9 @@ $(document).ready(function () {
 
     // Check input validation
     $("#textBox").change(function(){
-        let pattern = /^[\w\s]*$/
+        let pattern = /^[\w\s\n\r=+$￥<>^`~|]*$/
         if(!pattern.test($("#textBox").val())) {
-            alert("not valid input")
+            alert("Only number, alphabets, =+$￥<>^`~| are allowed")
         }
     });
 
