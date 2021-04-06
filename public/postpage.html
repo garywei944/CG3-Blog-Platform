@@ -1,119 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <style>
-            body{
-                margin: 0;
-                padding: 0;
-            }
-    
-            #top{
-                background-color: #1e90ff;
-                border: 1px solid black;
-                box-sizing: border-box;
-                width: 100vw;
-                height: 10vh;
-            }
-    
-            #bottom{
-                background-color: aqua;
-                border: 1px solid black;
-                box-sizing: border-box;
-                width: 100vw;
-                height: 90vh;
-            }
-    
-            .right{
-                float: right;
-                margin-right: 10px;
-            }
-    
-            #home{
-                margin-left: 100px;
-                text-decoration: none;
-                font-size: 40px;
-    
-            }
-    
-            #newpost{
-                float: right;
-                width: 50px;
-                margin-right: 50px;
-                margin-top: 10px;
-                font-size: 16px;
-            }
-    
-            #circle{
-                color: gray;
-                border-radius: 50%;
-                margin-top: 10px;
-                height: 40px;
-                width: 40px;
-            }
-    
-            #toolbar{
-                margin-left: 35vw;
-                margin-top: 10px;
-                text-align: center;
-                width: 30vw;
-                height: 5vh;
-                border: 1px solid black;
-            }
-    
-            .button{
-                margin-top: 7px;
-                width: 5vw;
-                background-color: white;
-            }
-    
-            #textBox{
-                margin-top: 15px;
-                margin-left: 15vw;
-                width: 70vw;
-                height: 70vh;
-                border: 1px solid black;
-                text-align: center;
-                border-radius: 50px;
-            }
-    
-            #post{
-                text-decoration: none;
-                margin-left: 80vw;
-                font-size: 24px;
-            }
-        </style>
-    </head>
-    
-    
-    <body>
-        <div id="top">
-            <a id="home" href="">Home</a>
-    
-            <button id="newpost" class="right" onclick="window.location.href='https://www.google.com';">New Post</button>
-    
-            <button id="circle" class="right"></button>
-        </div>
-    
-        <div id="bottom">
-            <div id="toolbar">
-                <button class="button" type="button">H1</button>
-    
-                <button class="button" type="button">B</button>
-    
-                <button class="button" type="button">I</button>
-    
-                <button class="button" type="button">U</button>
-    
-                <button class="button" type="button">Color</button>
-            </div>
-    
-            <div id="textBox">
-                What's on your mind today?
-            </div>
-    
-            <a id="post" href="">Post</a>
-        </div>
-    
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <title>Make a new post</title>
+    <link rel="stylesheet" href="css/postpage.css">
+    <script src="js/postpage.js" defer></script>
+</head>
+
+
+<body>
+<div id="top">
+    <a id="home" href="index.html">Home</a>
+    <button id="newpost" class="right">New Post</button>
+    <button id="circle" class="right"></button>
+</div>
+
+<div id="bottom">
+    <div id="toolbar">
+        <button class="button" type="button">H1</button>
+        <button class="button" type="button">B</button>
+        <button class="button" type="button">I</button>
+        <button class="button" type="button">U</button>
+        <button class="button" type="button">Color</button>
+    </div>
+
+    <form action="">
+        <input type="text" id="textBox" name="postContext">
+        <input type="submit" id="post">
+    </form>
+</div>
+
+</body>
 </html>
