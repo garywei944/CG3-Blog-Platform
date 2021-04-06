@@ -87,11 +87,8 @@ img.avatar {
   top: 5px;
 }
 
-#inputblock{
+.inputblock{
   margin-bottom: 20px;
-}
-
-#submitblock{
 }
 
 #bottom{
