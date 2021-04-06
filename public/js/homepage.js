@@ -23,11 +23,11 @@ $(document).ready(function () {
     });
 
     $(".list").click(function () {
-        window.location.href = 'genglin_blog_page.html';
+        window.location.href = 'blogpage.html';
     });
 
     $(".wl").click(function () {
-        window.location.href = 'genglin_blog_page.html';
+        window.location.href = 'blogpage.html';
     })
 
 });
