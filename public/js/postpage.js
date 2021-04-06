@@ -8,4 +8,12 @@ $(document).ready(function () {
         window.location.href = 'profile.html';
     });
 
+    // Check input validation
+    $("#textBox").change(function(){
+        let pattern = /^[\w\s]*$/
+        if(!pattern.test($("#textBox").val())) {
+            alert("not valid input")
+        }
+    });
+
 });
