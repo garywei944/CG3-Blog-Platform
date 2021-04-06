@@ -3,7 +3,7 @@ $(document).ready(function() {
     // click on the circle profile pic => switch to profile page 
 
     $(".circle").click(function(){
-        window.location.href='homepage2.html'; // switch to profile page instead (when we have one)
+        window.location.href='profile.html'; // switch to profile page instead (when we have one)
     });
 
     // click on "read later" => show alert("placed ")
