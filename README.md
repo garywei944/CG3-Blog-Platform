@@ -1,3 +1,12 @@
+# CG3 Blog Platform
+UMass Amherst 2021 Spring CS 326 Final Project. Build with node.js(express) and deployed on heroku.
+
+[***Check it on heroku***](https://stark-tor-10041.herokuapp.com/)
+
+
+---
+The following are the original README forked from [ftPeter/web-programming-homework-base](https://github.com/ftPeter/web-programming-homework-base)
+
 ## Final Project Base Project
 
 This repo contains a good starting place for getting a static website running on Heroku.
@@ -11,4 +20,3 @@ This repo contains a good starting place for getting a static website running on
 5. heroku create 
 6. git push heroku master
 7. heroku open /
-

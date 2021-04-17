@@ -1,7 +1,7 @@
 {
-  "name": "node-js-getting-started",
-  "version": "0.3.0",
-  "description": "A sample Node.js app using Express 4",
+  "name": "cg3",
+  "version": "0.1.0",
+  "description": "CG3 Blog Platform",
   "engines": {
     "node": "12.x"
   },
