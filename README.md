@@ -4,14 +4,7 @@ UMass Amherst 2021 Spring CS 326 Final Project. Build with node.js(express) and 
 [***Check it on heroku***](https://stark-tor-10041.herokuapp.com/)
 
 
----
-The following are the original README forked from [ftPeter/web-programming-homework-base](https://github.com/ftPeter/web-programming-homework-base)
-
-## Final Project Base Project
-
-This repo contains a good starting place for getting a static website running on Heroku.
-
-# Steps for turning this repo into a Heroku-Hosted Website
+## Steps for turning this repo into a Heroku-Hosted Website
 
 1. Log in to the github.com using your account information
 2. Open https://github.com/ftPeter/web-programming-final-project-base in a web browser
