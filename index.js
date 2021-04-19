@@ -242,7 +242,7 @@ express()
     try {
       const client = await pool.connect();
       
-      const result = await client.query('SELECT * FROM user_account');
+      const result = await client.query('SELECT title FROM post');
       const results = { 'results': (result) ? result.rows : null};
       // res.render('pages/gavin', results );
       res.json(results);
