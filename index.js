@@ -224,7 +224,7 @@ express()
       const client = await pool.connect();
       const result = await client.query("SELECT * FROM pg_tables WHERE tablename NOT LIKE 'pg_%' AND tablename NOT LIKE 'sql_%'");
       const result2 = await client.query("SELECT * FROM user_account");
-      const results = { 'results': (result) ? result.rows : null,'results2': (result2) ? result2.rows : null};
+      const results = {'results2': (result2) ? result2.rows : null,'results': (result) ? result.rows : null};
       res.render('pages/db', results );
       client.release();
     } catch (err) {
