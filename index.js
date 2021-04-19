@@ -225,13 +225,6 @@ express()
       result = await client.query("SELECT * FROM user_account");
       results = new Object();
       results.results = (result) ? result.rows : null;
-    } catch (err) {
-      console.error(err);
-      res.send("Error " + err);
-    }
-    try {
-      result = await client.query("SELECT * FROM pg_tables WHERE tablename NOT LIKE 'pg_%' AND tablename NOT LIKE 'sql_%'");
-      results.results2 = (result) ? result.rows : null;
       res.render('pages/db', results );
       client.release();
     } catch (err) {
