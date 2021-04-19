@@ -1,7 +1,7 @@
 
 $(document).ready(function() {
 
-    $.get('/blog', function(data){
+    $.get('/blog/:post_id', function(data){
         console.log(data);
         data.results.forEach(function(item){
             let content = "<p>" + item.content + "<p>";
