@@ -245,7 +245,7 @@ express()
       console.error(err);
       res.send("Error " + err);
     }
-  });
+  })
 
   //Retrieving Blog Content from database and show it in the blogpage html
   .get('/blog/:post_id', async (req, res) => {
