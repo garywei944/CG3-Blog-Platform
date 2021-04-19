@@ -21,14 +21,16 @@ express()
   // /db is a debugging view into the complete order_table database table
   .get('/db', async (req, res) => {
     try {
-      const client = await pool.connect();
-      const result = await client.query("SELECT * FROM pg_tables WHERE tablename NOT LIKE 'pg_%' AND tablename NOT LIKE 'sql_%'");
+      client = await pool.connect();
+      result = await client.query("SELECT * FROM user_account;");
       client.release();
-      const client = await pool.connect();
-      const result2 = await client.query("SELECT * FROM user_account");
-      const results = {'results2': (result2) ? result2.rows : null};
+      results = new Object();
+      results.results = (result) ? result.rows : null;
+      client = await pool.connect();
+      result = await client.query("SELECT * FROM pg_tables WHERE tablename NOT LIKE 'pg_%' AND tablename NOT LIKE 'sql_%';");
+      results.results2 = (result) ? result.rows : null;
       res.render('pages/db', results );
-      client.release();
+      client2.release();
     } catch (err) {
       console.error(err);
       res.send("Error " + err);
