@@ -224,7 +224,7 @@ express()
     try {
       const client = await pool.connect();
       const tablenames = await client.query('select tablename from pg_tables where schemaname="public"');
-      tables = new Array();
+      var tables = new Array();
       tablenames.forEach(function(name){
         tables.push({"tablename":name,table:await client.query(`SELECT * FROM ${name}`)});
       })
