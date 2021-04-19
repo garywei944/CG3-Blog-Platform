@@ -22,9 +22,11 @@ express()
   .get('/db', async (req, res) => {
     try {
       const client = await pool.connect();
-      
-      const result = await client.query('SELECT * FROM user_account');
-      const results = { 'results': (result) ? result.rows : null};
+      const result = await client.query("SELECT * FROM pg_tables WHERE tablename NOT LIKE 'pg_%' AND tablename NOT LIKE 'sql_%'");
+      client.release();
+      const client = await pool.connect();
+      const result2 = await client.query("SELECT * FROM user_account");
+      const results = {'results2': (result2) ? result2.rows : null};
       res.render('pages/db', results );
       client.release();
     } catch (err) {
@@ -40,7 +42,22 @@ express()
       
       const result = await client.query('SELECT title FROM post');
       const results = { 'results': (result) ? result.rows : null};
-      // res.render('pages/gavin', results );
+      res.json(results);
+      client.release();
+    } catch (err) {
+      console.error(err);
+      res.send("Error " + err);
+    }
+  })
+
+  //Retrieving Blog Content from database and show it in the blogpage html
+  .get('/blog/:post_id', async (req, res) => {
+    try {
+      const client = await pool.connect();
+
+      const cond = `SELECT content FROM post WHERE post_id = ${req.params.post_id}`
+      const result = await client.query(cond);
+      const results = { 'results': (result) ? result.rows : null};
       res.json(results);
       client.release();
     } catch (err) {

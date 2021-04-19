@@ -1,7 +1,15 @@
 
 $(document).ready(function() {
-    // click on the circle profile pic => switch to profile page 
 
+    $.get('/blog/:post_id', function(data){
+        console.log(data);
+        data.results.forEach(function(item){
+            let content = "<p>" + item.content + "<p>";
+            $("#blogContent").append(content);
+        })
+    }, 'json');
+
+    // click on the circle profile pic => switch to profile page 
     $(".circle").click(function(){
         window.location.href='profile.html'; // switch to profile page instead (when we have one)
     });
