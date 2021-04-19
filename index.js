@@ -5,7 +5,7 @@ const {Pool} = require('pg');
 const pool = new Pool({
     connectionString: process.env.DATABASE_URL,
     // Allow local PostgreSQL server that doesn't support ssl, should not affect any cloud functionality.
-    ssl: 'LOCAL_DEBUG' in process.env ? false : {
+    ssl: {
         rejectUnauthorized: false
     }
 });
