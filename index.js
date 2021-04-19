@@ -232,6 +232,24 @@ express()
       res.send("Error " + err);
     }
   })
+
+    //Retrieving data from database and show it in the homepage html
+  .get('/homepage', async (req, res) => {
+    try {
+      const client = await pool.connect();
+      
+      const result = await client.query('SELECT * FROM user_account');
+      const results = { 'results': (result) ? result.rows : null};
+      // res.render('pages/gavin', results );
+      res.json(results);
+      client.release();
+    } catch (err) {
+      console.error(err);
+      res.send("Error " + err);
+    }
+  })
+
+  
   .get('/gavin', (req, res) => res.render('pages/gavin'))
 
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
