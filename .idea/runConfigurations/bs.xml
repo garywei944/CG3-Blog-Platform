@@ -1,0 +1,9 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="bs" type="BashProRunConfiguration">
+    <scriptContent>browser-sync start -p &quot;localhost:5000&quot; -f &quot;public&quot;</scriptContent>
+    <option name="scriptPath" value="$PROJECT_DIR$/run_bs.sh" />
+    <option name="sourceType" value="snippet" />
+    <RunnerSettings bashdbVersion="Automatic" bashPathMapper="Automatic" RunnerId="pro.bashsupport.shDebugRunner" />
+    <method v="2" />
+  </configuration>
+</component>
