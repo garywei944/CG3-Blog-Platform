@@ -14,14 +14,16 @@ $(document).ready(function () {
     //     wlNum++;
     // }
 
-     $.get('/homepage', function(data){
-        console.log(data);
-        var dt = JSON.parse(data);
-        dt.forEach(function(item){
-            let post = "<tr><td class='list'><a>" + item.username + "</a></td></tr>";
+    $.get('/homepage', function(data){
+        data.results.forEach(function(item){
+            let post = "<tr><td class='list'><a>" + item.title + "</a></td></tr>";
             $('#posts').append(post);
         })
-    }, 'json');
+    }, 'json').done(function(){
+            $(".list").click(function () {
+        window.location.href = 'blogpage.html';
+        });
+    });
 
     $("#newpost").click(function () {
         window.location.href = 'post.html';
@@ -31,12 +33,9 @@ $(document).ready(function () {
         window.location.href = 'index.html';
     });
 
-    $(".list").click(function () {
-        window.location.href = 'blogpage.html';
-    });
 
     $(".wl").click(function () {
         window.location.href = 'blogpage.html';
-    })
+    });
 
 });
