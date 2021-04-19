@@ -1,7 +1,19 @@
+
+
+.info {
+    height: 40vh;
+}
+
+.avatar {
+
+}
+
 .username {
     font-size: 2em;
+    height: 25%;
 }
 
 .bio {
-    overflow-y: scroll;
+    overflow-y: auto;
+    height: 75%;
 }
