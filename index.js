@@ -1,4 +1,5 @@
 
+const { table } = require('console');
 const express = require('express')
 const path = require('path')
 const PORT = process.env.PORT || 5000
@@ -222,9 +223,12 @@ express()
   .get('/db', async (req, res) => {
     try {
       const client = await pool.connect();
-      
-      const result = await client.query('SELECT * FROM user_account');
-      const results = { 'results': (result) ? result.rows : null};
+      const tablenames = await client.query('select tablename from pg_tables where schemaname="public"');
+      tables = new Array();
+      tablenames.forEach(function(name){
+        tables.push({"tablename":name,table:await client.query(`SELECT * FROM ${name}`)});
+      })
+      const results = { 'results': (tables) ? result.rows : null};
       res.render('pages/db', results );
       client.release();
     } catch (err) {
