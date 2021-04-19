@@ -24,7 +24,7 @@ $(document).ready(function () {
     }, 'json');
 
     $("#newpost").click(function () {
-        window.location.href = 'postpage.html';
+        window.location.href = 'post.html';
     });
 
     $("#home").click(function () {
