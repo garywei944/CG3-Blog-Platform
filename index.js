@@ -222,12 +222,12 @@ express()
   .get('/db', async (req, res) => {
     try {
       client = await pool.connect();
-      result = await client.query("SELECT * FROM pg_tables WHERE tablename NOT LIKE 'pg_%' AND tablename NOT LIKE 'sql_%';");
+      result = await client.query("SELECT * FROM user_account;");
       client.release();
       results = new Object();
       results.results = (result) ? result.rows : null;
       client = await pool.connect();
-      result = await client.query("SELECT * FROM user_account;");
+      result = await client.query("SELECT * FROM pg_tables WHERE tablename NOT LIKE 'pg_%' AND tablename NOT LIKE 'sql_%';");
       results.results2 = (result) ? result.rows : null;
       res.render('pages/db', results );
       client2.release();
