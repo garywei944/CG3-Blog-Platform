@@ -1,19 +1,15 @@
-
-
-.info {
-    height: 40vh;
+#avatar {
+    /*padding-top: 1em;*/
 }
 
-.avatar {
-
+#info {
+    height: 20vh;
 }
 
-.username {
+#username {
     font-size: 2em;
-    height: 25%;
 }
 
-.bio {
+#bio {
     overflow-y: auto;
-    height: 75%;
 }
