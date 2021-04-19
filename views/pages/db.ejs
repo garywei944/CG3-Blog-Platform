@@ -9,9 +9,10 @@
 <div class="container">
 <h2>Database Results</h2>
 
+<h3>Table: username</h3>
 <ul>
     <% results.forEach(function(r) { %>
-        <li><%= r.id %> - <%= r.first_name %> - <%= r.food_order %></li>
+        <li><%= r.username %> - <%= r.pwd %> - <%= r.profile_pic %> - <%= r.bio %></li>
     <% }); %>
 </ul>
 
