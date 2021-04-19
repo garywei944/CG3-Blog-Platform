@@ -224,6 +224,7 @@ express()
       client = await pool.connect();
       result = await client.query("SELECT * FROM pg_tables WHERE tablename NOT LIKE 'pg_%' AND tablename NOT LIKE 'sql_%';");
       client.release();
+      results = new Object();
       results.results = (result) ? result.rows : null;
       client = await pool.connect();
       result = await client.query("SELECT * FROM user_account;");
