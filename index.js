@@ -226,9 +226,12 @@ express()
       const tablenames = await client.query('select tablename from pg_tables where schemaname="public"');
       var tables = new Array();
       tablenames.forEach(function(name){
-        tables.push({"tablename":name,table:await client.query(`SELECT * FROM ${name}`)});
+        tablesaver.tablename = name;
+        const sqlcommand = `SELECT * FROM ${name}`
+        tablesaver.table = await client.query(sqlcommand);
+        tables.push(tablesaver);
       })
-      const results = { 'results': (tables) ? result.rows : null};
+      const results = { 'results': (result) ? result.rows : null};
       res.render('pages/db', results );
       client.release();
     } catch (err) {
@@ -242,7 +245,7 @@ express()
     try {
       const client = await pool.connect();
       
-      const result = await client.query('SELECT title FROM post');
+      const result = await client.query('SELECT * FROM user_account');
       const results = { 'results': (result) ? result.rows : null};
       // res.render('pages/gavin', results );
       res.json(results);
