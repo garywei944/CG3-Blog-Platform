@@ -15,7 +15,8 @@ $(document).ready(function () {
     // }
 
      $.get('/homepage', function(data){
-        data.forEach(function(item){
+        var dt = JSON.parse(data);
+        dt.forEach(function(item){
             let post = "<tr><td class='list'><a>" + item.username + "</a></td></tr>";
             $('#posts').append(post);
         })
