@@ -251,8 +251,9 @@ express()
   .get('/blog/:post_id', async (req, res) => {
     try {
       const client = await pool.connect();
-      
-      const result = await client.query('SELECT content FROM post WHERE post_id =' + req.params.post_id);
+
+      const cond = `SELECT content FROM post WHERE post_id = ${req.params.post_id}`
+      const result = await client.query(cond);
       const results = { 'results': (result) ? result.rows : null};
       res.json(results);
       client.release();
