@@ -239,7 +239,21 @@ express()
       
       const result = await client.query('SELECT * FROM user_account');
       const results = { 'results': (result) ? result.rows : null};
-      // res.render('pages/gavin', results );
+      res.json(results);
+      client.release();
+    } catch (err) {
+      console.error(err);
+      res.send("Error " + err);
+    }
+  })
+
+  //Retrieving Blog Content from database and show it in the blogpage html
+  .get('/blog/:post_id', async (req, res) => {
+    try {
+      const client = await pool.connect();
+      
+      const result = await client.query('SELECT content FROM post WHERE post_id =' + req.params.post_id);
+      const results = { 'results': (result) ? result.rows : null};
       res.json(results);
       client.release();
     } catch (err) {
