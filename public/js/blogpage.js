@@ -7,7 +7,7 @@ $(document).ready(function() {
             let content = "<p>" + item.content + "<p>";
             $("#blogContent").append(content);
         })
-    }， 'json');
+    }, 'json');
 
     // click on the circle profile pic => switch to profile page 
     $(".circle").click(function(){
