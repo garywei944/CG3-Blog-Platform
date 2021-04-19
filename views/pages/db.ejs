@@ -10,6 +10,8 @@
 <h2>Database Results</h2>
 
 <h3>Table: user_account</h3>
+
+<h3><%= JSON.stringify(results) %></h3>
 <ul>
     <% results.forEach(function(r) { %>
         <li><%= r.Name %> - <%= r.Type %> - <%= r.profile_pic %> - <%= r.bio %></li>
