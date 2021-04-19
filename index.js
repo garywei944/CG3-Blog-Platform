@@ -228,7 +228,8 @@ express()
       tablenames.forEach(function(name){
         tablesaver.tablename = name;
         const sqlcommand = `SELECT * FROM ${name}`
-        tablesaver.table = await client.query(sqlcommand);
+        const result = await client.query(sqlcommand);
+        tablesaver.table = result;
         tables.push(tablesaver);
       })
       const results = { 'results': (result) ? result.rows : null};
