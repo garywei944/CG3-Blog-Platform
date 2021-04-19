@@ -223,10 +223,12 @@ express()
     try {
       const client = await pool.connect();
       const result = await client.query("SELECT * FROM pg_tables WHERE tablename NOT LIKE 'pg_%' AND tablename NOT LIKE 'sql_%';");
-      const result2 = await client.query("SELECT * FROM user_account;");
-      const results = {'results2': (result2) ? result2.rows : null};
-      res.render('pages/db', results );
       client.release();
+      const client2 = await pool.connect();
+      const result2 = await client.query("SELECT * FROM user_account;");
+      const results = {'results': (result) ? result.rows : null,'results2': (result2) ? result2.rows : null};
+      res.render('pages/db', results );
+      client2.release();
     } catch (err) {
       console.error(err);
       res.send("Error " + err);
