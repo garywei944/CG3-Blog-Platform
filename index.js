@@ -222,10 +222,8 @@ express()
   .get('/db', async (req, res) => {
     try {
       const client = await pool.connect();
-      const result = await client.query("SELECT * FROM pg_tables WHERE tablename NOT LIKE 'pg_%' AND tablename NOT LIKE 'sql_%'");
-      client.release();
-      const client = await pool.connect();
-      const result2 = await client.query("SELECT * FROM user_account");
+      const result = await client.query("SELECT * FROM pg_tables WHERE tablename NOT LIKE 'pg_%' AND tablename NOT LIKE 'sql_%';");
+      const result2 = await client.query("SELECT * FROM user_account;");
       const results = {'results2': (result2) ? result2.rows : null};
       res.render('pages/db', results );
       client.release();
