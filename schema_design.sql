@@ -40,6 +40,7 @@ INSERT INTO post (username, title, content) values ('Alex', 'post alex 2', 'stor
 INSERT INTO post (username, title, content) values ('Chris', 'post Chris', 'story Chris');
 
 
+
 INSERT INTO liked values ('Alex', 'post Chris');
 INSERT INTO liked values ('Chris', 'post alex');
 
@@ -48,3 +49,20 @@ INSERT INTO follow values ('Chris', 'Alex');
 INSERT INTO follow values ('Alex', 'Devin');
 
 ALTER TABLE follow ALTER COLUMN follower_name TYPE VARCHAR(20);
+
+-- add post_id
+ALTER TABLE post ADD post_id VARCHAR(20);
+INSERT INTO post (post_id) values ('Alex', 'post alex', 'story alex');
+
+UPDATE post SET post_id = '01' WHERE title = 'post alex';
+UPDATE post SET post_id = '02' WHERE title = 'post alex 2';
+UPDATE post SET post_id = '03' WHERE title = 'post Chris';
+
+
+-- ALTER TABLE post DROP CONSTRAINT post_pkey;
+
+-- adding three posts
+INSERT INTO post (username, title, content, post_id) values 
+    ('Chris', 'post Chris 2', 'story Chris 2', '04'),
+    ('Devin', 'post Devin', 'story Devin', '05'),
+    ('Devin', 'post Devin 2', 'story Devin 2', '06');
