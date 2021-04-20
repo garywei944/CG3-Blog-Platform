@@ -24,8 +24,6 @@ router.post('/post', async function (req, res, next) {
     if (checkPost(username, title, content)) {
         let query_text = `insert into post (username, title, content, post_time) values ('${username}', '${title}', '${content}', '${post_time}')`;
 
-        console.log(query_text);
-
         try {
             // const client = await pool.connect();
 
