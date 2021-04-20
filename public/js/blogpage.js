@@ -5,7 +5,7 @@ $(document).ready(function() {
         
     $.get('/db/post/:post_id', function(data){
         console.log(data);
-        data.results.forEach(function(item){
+        data.forEach(function(item){
             let content = "<p>" + item.content + "<p>";
             $("#blogContent").append(content);
         })

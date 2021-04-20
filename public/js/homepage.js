@@ -1,7 +1,7 @@
 $(document).ready(function () {
     $.get('/api/homepage', function(data){
-        data.results.forEach(function(item){
-            let post = "<tr><td class='list'><a>" + item.title + "</a></td></tr>";
+        data.forEach(function(item){
+            let post = "<tr><td class='list'><a id="item.post_id">" + item.title + "</a></td></tr>";
             $('#posts').append(post);
         })
     }, 'json').done(function(){
