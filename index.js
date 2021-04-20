@@ -21,87 +21,72 @@ mountRoutes(app);
 app
     // /db is a debugging view into the complete order_table database table
     .get('/db', async (req, res) => {
-        let client;
         let result;
         let results;
         try {
-            client = await pool.connect();
-            result = await client.query("SELECT * FROM pg_tables WHERE tablename NOT LIKE 'pg%' AND tablename NOT LIKE 'sql_%'");
+            result = await db.query("SELECT * FROM pg_tables WHERE tablename NOT LIKE 'pg%' AND tablename NOT LIKE 'sql_%'");
             results = {};
             results.results = (result) ? result.rows : null;
             res.render('pages/db', results);
-            client.release();
         } catch (err) {
             console.error(err);
             res.send("Error " + err);
         }
     })
     .get('/user_account', async (req, res) => {
-        let client;
         let result;
         let results;
         try {
-            client = await pool.connect();
-            result = await client.query("SELECT * FROM user_account");
+            result = await db.query("SELECT * FROM user_account");
             results = {};
             results.results = (result) ? result.rows : null;
             res.render('pages/db', results);
-            client.release();
         } catch (err) {
             console.error(err);
             res.send("Error " + err);
         }
     })
     .get('/post', async (req, res) => {
-        let client;
         let result;
         let results;
         try {
-            client = await pool.connect();
-            result = await client.query("SELECT * FROM post");
+            result = await db.query("SELECT * FROM post");
             results = {};
             results.results = (result) ? result.rows : null;
             res.render('pages/db', results);
-            client.release();
         } catch (err) {
             console.error(err);
             res.send("Error " + err);
         }
     })
     .get('/liked', async (req, res) => {
-        let client;
         let result;
         let results;
         try {
-            client = await pool.connect();
-            result = await client.query("SELECT * FROM liked");
+            result = await db.query("SELECT * FROM liked");
             results = {};
             results.results = (result) ? result.rows : null;
             res.render('pages/db', results);
-            client.release();
         } catch (err) {
             console.error(err);
             res.send("Error " + err);
         }
     })
     .get('/follow', async (req, res) => {
-        let client;
         let result;
         let results;
         try {
-            client = await pool.connect();
-            result = await client.query("SELECT * FROM follow");
+            result = await db.query("SELECT * FROM follow");
             results = {};
             results.results = (result) ? result.rows : null;
             res.render('pages/db', results);
-            client.release();
         } catch (err) {
             console.error(err);
             res.send("Error " + err);
         }
     })
 
-    //Page rendering 
+    //Page rendering
     .get('/login', function (req, res) {
         res.sendFile(path.join(__dirname + '/public/loginpage.html'));
     })
@@ -134,12 +119,10 @@ app
         let email = req.body.email;
         let psw = req.body.psw;
         let c_psw;
-        client = await pool.connect();
-        result = await client.query("SELECT * FROM user_account WHERE username = $1", [email]);
+        result = await db.query("SELECT * FROM user_account WHERE username = $1", [email]);
         console.log("result:", JSON.stringify(result.rows));
         c_psw = result.rows[0].pwd;
         console.log(`check ${email} : if ${psw} = ${c_psw}`);
-        client.release();
         if (psw === c_psw) {
             console.log(1);
             res.json(true);
@@ -155,10 +138,8 @@ app
         let email = req.body.email;
         let psw = req.body.psw;
         console.log(`register: ${email} ${psw}`);
-        client = await pool.connect();
-        result = await client.query("INSERT INTO user_account VALUES ($1, $2, $3, $4);", [email, psw, "images/akari.jpg", "I'm a new user."]);
+        result = await db.query("INSERT INTO user_account VALUES ($1, $2, $3, $4);", [email, psw, "images/akari.jpg", "I'm a new user."]);
         res.json('Done');
-        client.release();
         console.log('register end');
     })
 
@@ -166,12 +147,9 @@ app
     //Retrieving data from database and show it in the homepage html
     .get('/homepage', async (req, res) => {
         try {
-            const client = await pool.connect();
-
-            const result = await client.query('SELECT title FROM post');
+            const result = await db.query('SELECT title FROM post');
             const results = {'results': (result) ? result.rows : null};
             res.json(results);
-            client.release();
         } catch (err) {
             console.error(err);
             res.send("Error " + err);
@@ -181,13 +159,10 @@ app
     //Retrieving Blog Content from database and show it in the blogpage html
     .get('/blog/:post_id', async (req, res) => {
         try {
-            const client = await pool.connect();
-
             const cond = `SELECT content FROM post WHERE post_id = ${req.params.post_id}`
-            const result = await client.query(cond);
+            const result = await db.query(cond);
             const results = {'results': (result) ? result.rows : null};
             res.json(results);
-            client.release();
         } catch (err) {
             console.error(err);
             res.send("Error " + err);
