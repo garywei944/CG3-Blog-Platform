@@ -153,7 +153,7 @@ express()
         console.log(`register: ${email} ${psw}`);
         client = await pool.connect();
         result = await client.query("INSERT INTO user_account VALUES ($1, $2, $3, $4);",[email,psw,"images/akari.jpg","I'm a new user."]);
-        res.status(200);
+        res.json('Done');
         client.release();
         console.log('register end');
     })
