@@ -3,35 +3,56 @@
   <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/signup.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="js/signup.js"></script>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/post.js"></script>
   </head>
 
-	<form action="action_page.php" style="border:1px solid #ccc">
-  <div class="container">
-    <h1>Sign Up</h1>
-    <p>Please fill in this form to create an account.</p>
-    <hr>
+  <body>
 
-    <label for="email"><b>Email</b></label>
-    <input id="email" type="text" placeholder="Enter Email" name="email" required>
+    <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+      <a class="navbar-brand" href="index.html">CG3</a>
+  
+      <!--    TODO: link to the api of profile and change profile picture-->
+      <a href="profile.html" class="navbar-nav ml-auto">
+          <img src="images/akari.jpg" alt="Profile Picture" width="40" height="40" class="rounded-circle">
+      </a>
+      <a href="post.html" class="navbar-link btn btn-outline-light ml-2">New Post</a>
+    </nav>
+    <div id = "empty"></div>
+    <div id = "bottom">
+        <div id = "register" >
+            <h1>Register</h1>
+            <div class="container">
+                <div id = "inputblock">
+                    <label for="email" id = "emailinput"><b>Email</b></label>
+                    <input type="text" name="email" id="email" placeholder="Enter email" required>
+                </div>
 
-    <label for="psw"><b>Password</b></label>
-    <p id="passwordWarning"></p>
-    <input id="psw" type="password" placeholder="Enter Password" name="psw" required>
+                <div id = "inputblock">
+                    <label for="psw" id = "pswinput"><b>Password</b></label>
+                    <input type="password" name="psw" id = "psw" placeholder="Enter Password" required>
+                </div>
 
-    <label for="psw-repeat"><b>Repeat Password</b></label>
-    <input id="psw-repeat" type="password" placeholder="Repeat Password" name="psw-repeat" required>
+                <div id = "inputblock">
+                  <label for="psw-repeat" id = "psw-repeatinput"><b>Repeat Password</b></label>
+                  <input type="password" name="psw-repeat" id = "psw-repeat" placeholder="Enter Password" required>
+                </div>
 
-    <label>
-      <input id="checkbox" type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
-    </label>
+                <div id = "mesgblock">
+                    <p id = "loginMesg"></p>
+                </div>
 
-
-    <div class="clearfix">
-      <button id="cancelbtn" type="button" class="cancelbtn">Cancel</button>
-      <button id="signupbtn" type="submit" class="signupbtn">Sign Up</button>
+                <div id = "submitblock">
+                    <button type="submit" id="submit">Register</button>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-  </form>
+
+
+  </body>
 </html>

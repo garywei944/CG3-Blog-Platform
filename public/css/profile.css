@@ -1,0 +1,15 @@
+#avatar {
+    /*padding-top: 1em;*/
+}
+
+#info {
+    height: 20vh;
+}
+
+#username {
+    font-size: 2em;
+}
+
+#bio {
+    overflow-y: auto;
+}

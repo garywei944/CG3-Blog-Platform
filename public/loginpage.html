@@ -3,38 +3,43 @@
 <head>
     <title>Login page</title>
     <link href="./css/loginpage.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
     <meta charset="UTF-8">
     <script src = "./js/loginpage.js" defer></script>
+    <script src="js/jquery-3.6.0.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/post.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 </head>
 
 <body>
 
-    <div id="top">
-        <a id="home">Home</a>
-
-        <button id="newpost" class="right">New Post</button>
-
-        <button id="circle" class="right"></button>
-
-    </div>
-
+    <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+        <a class="navbar-brand" href="index.html">CG3</a>
+    
+        <!--    TODO: link to the api of profile and change profile picture-->
+        <a href="profile.html" class="navbar-nav ml-auto">
+            <img src="images/akari.jpg" alt="Profile Picture" width="40" height="40" class="rounded-circle">
+        </a>
+        <a href="post.html" class="navbar-link btn btn-outline-light ml-2">New Post</a>
+    </nav>
+    <div id = "empty"></div>
     <div id = "bottom">
-        <div id = "login" >
+        <div id = "login">
             <h1>Login</h1>
             <div class="imgcontainer">
-                <img src="./images/Akari.jpg" alt="Avatar" class="avatar">
+                <img src="./images/akari.jpg" alt="Avatar" class="avatar">
             </div>
 
             <div class="container">
-                <div class = "inputblock">
-                    <label for="username" class = "inputtext"><b>Username</b></label>
-                    <input type="text" name="username" id="username" placeholder="Enter Username" required>
+                <div id = "inputblock">
+                    <label for="email" id = "emailinput"><b>Email</b></label>
+                    <input type="text" name="email" id="email" placeholder="Enter email" required>
                 </div>
 
-                <div class = "inputblock">
-                    <label for="psw" class = "inputtext"><b>Password</b></label>
-                    <input type="password" name="psw" id="psw" placeholder="Enter Password" required>
+                <div id = "inputblock">
+                    <label for="psw" id = "pswinput"><b>Password</b></label>
+                    <input type="password" name="psw" id = "psw" placeholder="Enter Password" required>
                 </div>
 
                 <div id = "mesgblock">
@@ -42,21 +47,10 @@
                 </div>
 
                 <div id = "submitblock">
-                    <button type="submit" id = "submit">Login</button>
+                    <button type="submit" id="submit">Login</button>
                 </div>
-<<<<<<< HEAD
-
-<<<<<<< HEAD
-            <!--Sign up button-->
-            <a id="signup" href="https://stark-tor-10041.herokuapp.com/homepage2.html">New User? Sign Up Here!</a>
-
-        </div>
-=======
-=======
                 <a id="signup" href="#">New User? Sign Up Here!</a>
->>>>>>> babbc6ba29b686c929d579db5b43e30d92c6bfc3
             </div>
->>>>>>> 4d9e21a1c563b42d3e11459ca96fe0e6005b4426
         </div>
     </div>
 

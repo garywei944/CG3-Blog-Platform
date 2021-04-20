@@ -1,8 +1,13 @@
 $(document).ready(function () {
-    $.get('/homepage', function(data){
+    $.get('/api/homepage', function(data){
+        let cnt = 0;
         data.results.forEach(function(item){
+            if(cnt > 5){
+                break;
+            }
             let post = "<tr><td class='list'><a>" + item.title + "</a></td></tr>";
             $('#posts').append(post);
+            cnt += 1;
         })
     }, 'json').done(function(){
         console.log($(".list"));
@@ -12,7 +17,7 @@ $(document).ready(function () {
     });
 
     $("#newpost").click(function () {
-        window.location.href = 'postpage.html';
+        window.location.href = 'post.html';
     });
 
     $("#home").click(function () {

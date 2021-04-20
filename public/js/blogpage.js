@@ -3,6 +3,8 @@ $(document).ready(function() {
 
     $.get('/blog/:post_id', function(data){
         
+    $.get('/db/post/:post_id', function(data){
+        console.log(data);
         data.results.forEach(function(item){
             let content = "<p>" + item.content + "<p>";
             $("#blogContent").append(content);

@@ -1,6 +1,7 @@
 .DS_Store
 *.swp
 .idea
+*.dump
 
 # Node build artifacts
 node_modules
@@ -251,4 +252,3 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
-

@@ -78,7 +78,16 @@ img.avatar {
   padding: 16px;
 }
 
-.inputtext{
+#emailinput{
+  margin: 10px;
+  display: block;
+  /* text-align: center; */
+  position: relative;
+  left: -128px;
+  top: 5px;
+}
+
+#pswinput{
   margin: 10px;
   display: block;
   /* text-align: center; */
@@ -87,13 +96,15 @@ img.avatar {
   top: 5px;
 }
 
-.inputblock{
+#inputblock{
   margin-bottom: 20px;
+}
+
+#submitblock{
 }
 
 #bottom{
   height: 100vh;
-  border: 1px solid black;
   background-color: #1e90ff;
   box-sizing: border-box;
 }
@@ -111,20 +122,11 @@ h1{
   top: 10px;
 }
 
-<<<<<<< HEAD
-/*CSS for Sign Up botton*/
-#signup{
-  text-decoration: none;
-=======
 #mesgblock{
   position: relative;
   padding-top: 5px;
   padding-bottom: 5px;
   color: rgb(255, 68, 68);
-<<<<<<< HEAD:public/loginpage.css
->>>>>>> 4d9e21a1c563b42d3e11459ca96fe0e6005b4426
-}
-=======
 }
 
 #signup {
@@ -140,4 +142,12 @@ h1{
   position: relative;
   top:-7px;
 }
->>>>>>> babbc6ba29b686c929d579db5b43e30d92c6bfc3:public/css/loginpage.css
+
+#empty{
+  color: rgba(0, 0, 0, 0);
+  height: 50px;
+  background-color: #1e90ff;
+  box-sizing: border-box;
+  text-align: center;
+  margin: auto;
+}
