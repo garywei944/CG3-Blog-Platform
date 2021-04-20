@@ -1,13 +1,12 @@
 $(document).ready(function () {
     $.get('/api/homepage', function(data){
-        data.results.forEach(function(item){
-            let post = "<tr><td class='list'><a>" + item.title + "</a></td></tr>";
+        data.forEach(function(item){
+            let post = "<tr><td class='list' id='"+ item.post_id + "'><a>" + item.title + "</a></td></tr>";
             $('#posts').append(post);
         })
     }, 'json').done(function(){
-        console.log($(".list"));
             $(".list").click(function () {
-        window.location.href = 'blogpage.html';
+            window.location.href = '/db/post/' + $(this).attr('id');
         });
     });
 

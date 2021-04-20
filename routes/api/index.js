@@ -10,9 +10,9 @@ module.exports = app => {
         //Retrieving data from database and show it in the homepage html
         .get('/api/homepage', async (req, res) => {
             try {
-                const result = await db.query('SELECT title FROM post');
-                const results = {'results': (result) ? result.rows : null};
-                res.json(results);
+                const result = await db.query('SELECT title, post_id FROM post ORDER BY random() LIMIT 6');
+                const results = (result) ? result.rows : null;
+                res.send(results);
             } catch (err) {
                 console.error(err);
                 res.send("Error " + err);
