@@ -3,7 +3,7 @@ const path = require('path')
 const PORT = process.env.PORT || 5000
 const {Pool} = require('pg');
 const pool = new Pool({
-    connectionString: process.env.DATABASE_URL,
+    connectionString: 'postgres://juniukfpehmdne:236f3ffe26068d48891647c5f929636d231836c7806fa93371364b346605415f@ec2-34-225-167-77.compute-1.amazonaws.com:5432/de9lhvo95dcacl',
     ssl: {
         rejectUnauthorized: false
     }
@@ -25,7 +25,75 @@ express()
         let results;
         try {
             client = await pool.connect();
+            result = await client.query("SELECT * FROM pg_tables WHERE tablename NOT LIKE 'pg%' AND tablename NOT LIKE 'sql_%'");
+            results = {};
+            results.results = (result) ? result.rows : null;
+            res.render('pages/db', results);
+            client.release();
+        } catch (err) {
+            console.error(err);
+            res.send("Error " + err);
+        }
+    })
+
+    .get('/user_account', async (req, res) => {
+        let client;
+        let result;
+        let results;
+        try {
+            client = await pool.connect();
             result = await client.query("SELECT * FROM user_account");
+            results = {};
+            results.results = (result) ? result.rows : null;
+            res.render('pages/db', results);
+            client.release();
+        } catch (err) {
+            console.error(err);
+            res.send("Error " + err);
+        }
+    })
+
+    .get('/post', async (req, res) => {
+        let client;
+        let result;
+        let results;
+        try {
+            client = await pool.connect();
+            result = await client.query("SELECT * FROM post");
+            results = {};
+            results.results = (result) ? result.rows : null;
+            res.render('pages/db', results);
+            client.release();
+        } catch (err) {
+            console.error(err);
+            res.send("Error " + err);
+        }
+    })
+
+    .get('/liked', async (req, res) => {
+        let client;
+        let result;
+        let results;
+        try {
+            client = await pool.connect();
+            result = await client.query("SELECT * FROM liked");
+            results = {};
+            results.results = (result) ? result.rows : null;
+            res.render('pages/db', results);
+            client.release();
+        } catch (err) {
+            console.error(err);
+            res.send("Error " + err);
+        }
+    })
+
+    .get('/follow', async (req, res) => {
+        let client;
+        let result;
+        let results;
+        try {
+            client = await pool.connect();
+            result = await client.query("SELECT * FROM follow");
             results = {};
             results.results = (result) ? result.rows : null;
             res.render('pages/db', results);
