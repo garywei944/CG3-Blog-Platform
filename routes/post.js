@@ -40,7 +40,7 @@ router.post('/post', async function (req, res, next) {
 
 });
 
-async function checkPost(username, title, content) {
+function checkPost(username, title, content) {
     return username && title && content && username.length > 0 && title.length > 0 && content.length > 0;
 }
 

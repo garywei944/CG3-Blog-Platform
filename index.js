@@ -1,20 +1,24 @@
 const express = require('express');
 const path = require('path');
 const PORT = process.env.PORT || 5000;
+const db = require('./db');
+const mountRoutes = require('./routes');
 
-const post = require('./routes/post');
+const app = express();
 
-express()
+app
     .use(express.static(path.join(__dirname, 'public')))
     .use(express.urlencoded({extended: true}))
-    .use(express.json())
     .set('views', path.join(__dirname, 'views'))
     .set('view engine', 'ejs')
-    .use(post)
-    .get('/test', (req, res) => res.render('pages/test', {users: ["John", "Paul", "Ringo"]}))
     .get('/', function (req, res) {
         res.sendFile(path.join(__dirname + '/index.html'));
-    })
+    });
+
+// Mount routes in ./routes/index.js
+mountRoutes(app);
+
+app
     // /db is a debugging view into the complete order_table database table
     .get('/db', async (req, res) => {
         let client;
@@ -98,28 +102,28 @@ express()
     })
 
     //Page rendering 
-    .get('/login', function(req, res) {
+    .get('/login', function (req, res) {
         res.sendFile(path.join(__dirname + '/public/loginpage.html'));
     })
-    .get('/sign', function(req, res) {
+    .get('/sign', function (req, res) {
         res.sendFile(path.join(__dirname + '/public/signup.html'));
     })
-    .get('/register', function(req, res) {
+    .get('/register', function (req, res) {
         res.sendFile(path.join(__dirname + '/public/signup.html'));
     })
-    .get('/blog', function(req, res) {
+    .get('/blog', function (req, res) {
         res.sendFile(path.join(__dirname + '/public/blogpage.html'));
     })
-    .get('/post', function(req, res) {
+    .get('/post', function (req, res) {
         res.sendFile(path.join(__dirname + '/public/post.html'));
     })
-    .get('/profile', function(req, res) {
+    .get('/profile', function (req, res) {
         res.sendFile(path.join(__dirname + '/public/profile.html'));
     })
-    .get('/home', function(req, res) {
+    .get('/home', function (req, res) {
         res.sendFile(path.join(__dirname + '/public/index.html'));
     })
-    .get('/index', function(req, res) {
+    .get('/index', function (req, res) {
         res.sendFile(path.join(__dirname + '/public/index.html'));
     })
 
@@ -131,15 +135,15 @@ express()
         let psw = req.body.psw;
         let c_psw;
         client = await pool.connect();
-        result = await client.query("SELECT * FROM user_account WHERE username = $1",[email]);
+        result = await client.query("SELECT * FROM user_account WHERE username = $1", [email]);
         console.log("result:", JSON.stringify(result.rows));
         c_psw = result.rows[0].pwd;
         console.log(`check ${email} : if ${psw} = ${c_psw}`);
         client.release();
-        if(psw===c_psw){
+        if (psw === c_psw) {
             console.log(1);
             res.json(true);
-        }else{
+        } else {
             console.log(2);
             res.json(false);
         }
@@ -152,12 +156,12 @@ express()
         let psw = req.body.psw;
         console.log(`register: ${email} ${psw}`);
         client = await pool.connect();
-        result = await client.query("INSERT INTO user_account VALUES ($1, $2, $3, $4);",[email,psw,"images/akari.jpg","I'm a new user."]);
+        result = await client.query("INSERT INTO user_account VALUES ($1, $2, $3, $4);", [email, psw, "images/akari.jpg", "I'm a new user."]);
         res.json('Done');
         client.release();
         console.log('register end');
     })
-    
+
 
     //Retrieving data from database and show it in the homepage html
     .get('/homepage', async (req, res) => {
@@ -193,5 +197,4 @@ express()
 
     .get('/gavin', (req, res) => res.render('pages/gavin'))
 
-    .listen(PORT, () => console.log(`Listening on ${PORT}`))
-;
+    .listen(PORT, () => console.log(`Listening on ${PORT}`));
