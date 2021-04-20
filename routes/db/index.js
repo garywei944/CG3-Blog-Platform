@@ -50,8 +50,9 @@ module.exports = app => {
             try {
                 const cond = "SELECT content FROM post WHERE post_id = '${req.params.post_id}'"
                 const result = await db.query(cond);
-                const results = {'results': (result) ? result.rows : null};
-                res.json(results);
+                const results = (result) ? result.rows : null;
+                console.log(results);
+                res.render("pages/blogpage", results);
             } catch (err) {
                 console.error(err);
                 res.send("Error " + err);

@@ -1,19 +1,6 @@
 
 $(document).ready(function() {
 
-    // $.get('/blog/:post_id', function(data){
-        
-    $.get('/db/post/:post_id', function(data){
-        console.log(data);
-        data.forEach(function(item){
-            let content = "<p>" + item.content + "<p>";
-            $("#blogContent").append(content);
-        })
-    }, 'json');
-    // });
-
-
-
     // click on the circle profile pic => switch to profile page 
     $(".circle").click(function(){
         window.location.href='profile.html'; // switch to profile page instead (when we have one)
