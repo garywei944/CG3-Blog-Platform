@@ -52,7 +52,7 @@ module.exports = app => {
                 const result = await db.query(cond);
                 const results = (result) ? result.rows : null;
                 console.log(results);
-                res.render("pages/blogpage", results);
+                res.render("pages/blogpage", results[0]);
             } catch (err) {
                 console.error(err);
                 res.send("Error " + err);
