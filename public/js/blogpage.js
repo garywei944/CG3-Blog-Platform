@@ -1,7 +1,7 @@
 
 $(document).ready(function() {
 
-    $.get('/blog/:post_id', function(data){
+    // $.get('/blog/:post_id', function(data){
         
     $.get('/db/post/:post_id', function(data){
         console.log(data);
@@ -10,7 +10,7 @@ $(document).ready(function() {
             $("#blogContent").append(content);
         })
     }, 'json');
-    });
+    // });
 
 
 
