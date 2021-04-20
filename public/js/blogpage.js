@@ -10,6 +10,9 @@ $(document).ready(function() {
             $("#blogContent").append(content);
         })
     }, 'json');
+    });
+
+
 
     // click on the circle profile pic => switch to profile page 
     $(".circle").click(function(){
