@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $.get('/homepage', function(data){
+    $.get('/api/homepage', function(data){
         data.results.forEach(function(item){
             let post = "<tr><td class='list'><a>" + item.title + "</a></td></tr>";
             $('#posts').append(post);
