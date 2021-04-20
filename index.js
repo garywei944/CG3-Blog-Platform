@@ -4,7 +4,6 @@ const PORT = process.env.PORT || 5000
 const {Pool} = require('pg');
 const pool = new Pool({
     connectionString: process.env.DATABASE_URL,
-    // Allow local PostgreSQL server that doesn't support ssl, should not affect any cloud functionality.
     ssl: {
         rejectUnauthorized: false
     }
@@ -15,21 +14,22 @@ express()
     .use(express.urlencoded({extended: true}))
     .set('views', path.join(__dirname, 'views'))
     .set('view engine', 'ejs')
-    // .get('/test', (req, res) => res.render('pages/test', {users: ["John", "Paul", "Ringo"]}))
+    .get('/test', (req, res) => res.render('pages/test', {users: ["John", "Paul", "Ringo"]}))
     .get('/', function (req, res) {
         res.sendFile(path.join(__dirname + '/index.html'));
     })
     // /db is a debugging view into the complete order_table database table
     .get('/db', async (req, res) => {
+        let client;
+        let result;
+        let results;
         try {
-            const client = await pool.connect();
-            const result = await client.query("SELECT * FROM pg_tables WHERE tablename NOT LIKE 'pg_%' AND tablename NOT LIKE 'sql_%';");
-            client.release();
-            const client2 = await pool.connect();
-            const result2 = await client.query("SELECT * FROM user_account;");
-            const results = {'results': (result) ? result.rows : null, 'results2': (result2) ? result2.rows : null};
+            client = await pool.connect();
+            result = await client.query("SELECT * FROM user_account");
+            results = {};
+            results.results = (result) ? result.rows : null;
             res.render('pages/db', results);
-            client2.release();
+            client.release();
         } catch (err) {
             console.error(err);
             res.send("Error " + err);
