@@ -87,8 +87,11 @@ img.avatar {
   top: 5px;
 }
 
-.inputblock{
+#inputblock{
   margin-bottom: 20px;
+}
+
+#submitblock{
 }
 
 #bottom{
@@ -111,20 +114,11 @@ h1{
   top: 10px;
 }
 
-<<<<<<< HEAD
-/*CSS for Sign Up botton*/
-#signup{
-  text-decoration: none;
-=======
 #mesgblock{
   position: relative;
   padding-top: 5px;
   padding-bottom: 5px;
   color: rgb(255, 68, 68);
-<<<<<<< HEAD:public/loginpage.css
->>>>>>> 4d9e21a1c563b42d3e11459ca96fe0e6005b4426
-}
-=======
 }
 
 #signup {
@@ -140,4 +134,3 @@ h1{
   position: relative;
   top:-7px;
 }
->>>>>>> babbc6ba29b686c929d579db5b43e30d92c6bfc3:public/css/loginpage.css

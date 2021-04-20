@@ -1,6 +1,5 @@
 $(document).ready(function (){
 
-
     $("#newpost").click(function (){
         window.location.href = 'https://stark-tor-10041.herokuapp.com/postpage.html';
     });
