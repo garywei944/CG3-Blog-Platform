@@ -1,17 +1,10 @@
-const express = require('express');
-const router = require('express-promise-router')();
-
-const {Pool} = require('pg');
-const pool = new Pool({
-    connectionString: process.env.DATABASE_URL,
-    ssl: {
-        rejectUnauthorized: false
-    }
-});
+const Router = require('express-promise-router');
+const db = require('../db');
+const router = new Router();
 
 // api to post a new blog
 // return 201 on success, otherwise 404
-router.post('/post', function (req, res, next) {
+router.post('/post', async function (req, res, next) {
     const username = req.body.username;
     const title = req.body.title;
     const content = req.body.content;
@@ -32,10 +25,11 @@ router.post('/post', function (req, res, next) {
         let query_text = `insert into post (username, title, content, post_time) values (${username}, ${title}, ${content}, ${post_time})`;
 
         try {
-            const client = await pool.connect();
+            // const client = await pool.connect();
 
             // INSERT the new order information
-            const result = await client.query(query_text);
+            // const result = await client.query(query_text);
+            const result = await db.query(query_text);
 
             // // get the new ID number returned from the INSERT query
             // const order_number = (result) ? result.rows[0].id : null;
