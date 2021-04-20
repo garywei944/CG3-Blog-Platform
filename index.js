@@ -4,7 +4,6 @@ const PORT = process.env.PORT || 5000;
 
 const post = require('./routes/post');
 
-
 express()
     .use(express.static(path.join(__dirname, 'public')))
     .use(express.urlencoded({extended: true}))
