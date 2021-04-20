@@ -1,6 +1,6 @@
-const express = require('express')
-const path = require('path')
-const PORT = process.env.PORT || 5000
+const express = require('express');
+const path = require('path');
+const PORT = process.env.PORT || 5000;
 const {Pool} = require('pg');
 const pool = new Pool({
     connectionString: process.env.DATABASE_URL,
@@ -9,12 +9,15 @@ const pool = new Pool({
     }
 });
 
+const post = require('./routes/post');
+
 express()
     .use(express.static(path.join(__dirname, 'public')))
     .use(express.urlencoded({extended: true}))
     .use(express.json())
     .set('views', path.join(__dirname, 'views'))
     .set('view engine', 'ejs')
+    .use(post)
     .get('/test', (req, res) => res.render('pages/test', {users: ["John", "Paul", "Ringo"]}))
     .get('/', function (req, res) {
         res.sendFile(path.join(__dirname + '/index.html'));
@@ -198,3 +201,4 @@ express()
     .get('/gavin', (req, res) => res.render('pages/gavin'))
 
     .listen(PORT, () => console.log(`Listening on ${PORT}`))
+;

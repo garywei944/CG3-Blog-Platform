@@ -10,19 +10,19 @@ CREATE TABLE user_account (
 );
 
 CREATE TABLE post (
+    post_id serial  primary key,
     username VARCHAR(20),
     title VARCHAR(50),
     content TEXT,
     post_time TIMESTAMP,
-    PRIMARY KEY(title),
     FOREIGN KEY(username) REFERENCES user_account(username) 
 );
 
 CREATE TABLE liked (
     username VARCHAR(20),
-    post_title VARCHAR(50),
+    post_id serial,
     FOREIGN KEY(username) REFERENCES user_account(username),
-    FOREIGN KEY(post_title) REFERENCES post(title)
+    FOREIGN KEY(post_id) REFERENCES post(post_id)
 );
 
 CREATE TABLE follow (
@@ -44,9 +44,13 @@ INSERT INTO post (username, title, content) values
     ('Alex', 'post alex 2', 'story alex 2'),
     ('Chris', 'post Chris', 'story Chris');
 
-INSERT INTO liked values 
- ('Alex', 'post Chris'),
- ('Chris', 'post alex');
+--INSERT INTO liked values
+-- ('Alex', 'post Chris'),
+-- ('Chris', 'post alex');
+
+INSERT INTO liked values
+ ('Alex', 3),
+ ('Chris', 1);
 
 INSERT INTO follow values ('Alex', 'Chris'),
     ('Chris', 'Alex'),
@@ -56,18 +60,24 @@ INSERT INTO follow values ('Alex', 'Chris'),
 -- ALTER TABLE follow ALTER COLUMN follower_name TYPE VARCHAR(20);
 
 -- add post_id
-ALTER TABLE post ADD post_id VARCHAR(20);
-INSERT INTO post (post_id) values ('Alex', 'post alex', 'story alex');
+--ALTER TABLE post ADD post_id VARCHAR(20);
+--INSERT INTO post (post_id) values ('Alex', 'post alex', 'story alex');
 
-UPDATE post SET post_id = '01' WHERE title = 'post alex';
-UPDATE post SET post_id = '02' WHERE title = 'post alex 2';
-UPDATE post SET post_id = '03' WHERE title = 'post Chris';
+--UPDATE post SET post_id = '01' WHERE title = 'post alex';
+--UPDATE post SET post_id = '02' WHERE title = 'post alex 2';
+--UPDATE post SET post_id = '03' WHERE title = 'post Chris';
 
 -- dropping primary key attempt: didn't actually do it
 -- ALTER TABLE post DROP CONSTRAINT post_pkey;
 
+---- adding three posts
+--INSERT INTO post (username, title, content, post_id) values
+--    ('Chris', 'post Chris 2', 'story Chris 2', '04'),
+--    ('Devin', 'post Devin', 'story Devin', '05'),
+--    ('Devin', 'post Devin 2', 'story Devin 2', '06');
+
 -- adding three posts
-INSERT INTO post (username, title, content, post_id) values 
-    ('Chris', 'post Chris 2', 'story Chris 2', '04'),
-    ('Devin', 'post Devin', 'story Devin', '05'),
-    ('Devin', 'post Devin 2', 'story Devin 2', '06');
+INSERT INTO post (username, title, content) values
+    ('Chris', 'post Chris 2', 'story Chris 2'),
+    ('Devin', 'post Devin', 'story Devin'),
+    ('Devin', 'post Devin 2', 'story Devin 2');
