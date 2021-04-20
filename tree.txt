@@ -1,0 +1,35 @@
+.
+├── Procfile
+├── README.md
+├── db
+│   └── index.js
+├── index.js
+├── package-lock.json
+├── package.json
+├── public
+│   ├── css
+│   │   ├── bootstrap.min.css
+│   │   ├── bootstrap.min.css.map
+│   │   └── xxx.css
+│   ├── images
+│   │   └── akari.jpg
+│   ├── js
+│   │   ├── bootstrap.min.js
+│   │   ├── bootstrap.min.js.map
+│   │   ├── jquery-3.6.0.min.js
+│   │   └── xxx.js
+│   ├── index.html
+│   └── xxx.html
+├── routes
+│   ├── api
+│   │   ├── index.js
+│   │   └── xxx.js
+│   ├── db
+│   │   ├── index.js
+│   │   └── xxx.js
+│   └── index.js
+├── schema_design.sql
+├── test.js
+├── tree.txt
+└── views/pages
+    └── xxx.ejs

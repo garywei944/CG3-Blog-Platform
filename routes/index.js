@@ -8,9 +8,6 @@ const mountDB = require('./db');
 
 module.exports = app => {
     app
-        .get('/', function (req, res) {
-            res.sendFile(path.join(__dirname + '/../index.html'));
-        })
         //Page rendering
         .get('/login', function (req, res) {
             res.sendFile(path.join(__dirname + '/../public/loginpage.html'));
