@@ -5,9 +5,8 @@ $(document).ready(function () {
             $('#posts').append(post);
         })
     }, 'json').done(function(){
-        console.log($(".list"));
             $(".list").click(function () {
-        window.location.href = 'blogpage.html';
+            window.location.href = 'blogpage.html';
         });
     });
 
