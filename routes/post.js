@@ -8,7 +8,7 @@ router.post('/post', async function (req, res, next) {
     const username = req.body.username;
     const title = req.body.title;
     const content = req.body.content;
-    const post_time = Date.now();
+    const post_time = new Date(Date.now()).toISOString();
 
     let post_info = {
         username: username,
@@ -22,7 +22,9 @@ router.post('/post', async function (req, res, next) {
     res.sendStatus(201);
 
     if (checkPost(username, title, content)) {
-        let query_text = `insert into post (username, title, content, post_time) values (${username}, ${title}, ${content}, ${post_time})`;
+        let query_text = `insert into post (username, title, content, post_time) values ('${username}', '${title}', '${content}', '${post_time}')`;
+
+        console.log(query_text);
 
         try {
             // const client = await pool.connect();
@@ -55,7 +57,7 @@ router.post('/post', async function (req, res, next) {
 
             console.log(result)
 
-            client.release();
+            // client.release();
         } catch (err) {
             console.error(err);
             res.send("Error " + err);
