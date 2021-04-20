@@ -12,6 +12,7 @@ const pool = new Pool({
 express()
     .use(express.static(path.join(__dirname, 'public')))
     .use(express.urlencoded({extended: true}))
+    .use(express.json())
     .set('views', path.join(__dirname, 'views'))
     .set('view engine', 'ejs')
     .get('/test', (req, res) => res.render('pages/test', {users: ["John", "Paul", "Ringo"]}))
@@ -35,7 +36,6 @@ express()
             res.send("Error " + err);
         }
     })
-
     .get('/user_account', async (req, res) => {
         let client;
         let result;
@@ -52,7 +52,6 @@ express()
             res.send("Error " + err);
         }
     })
-
     .get('/post', async (req, res) => {
         let client;
         let result;
@@ -69,7 +68,6 @@ express()
             res.send("Error " + err);
         }
     })
-
     .get('/liked', async (req, res) => {
         let client;
         let result;
@@ -86,7 +84,6 @@ express()
             res.send("Error " + err);
         }
     })
-
     .get('/follow', async (req, res) => {
         let client;
         let result;
@@ -103,6 +100,67 @@ express()
             res.send("Error " + err);
         }
     })
+
+    //Page rendering 
+    .get('/login', function(req, res) {
+        res.sendFile(path.join(__dirname + '/public/loginpage.html'));
+    })
+    .get('/sign', function(req, res) {
+        res.sendFile(path.join(__dirname + '/public/signup.html'));
+    })
+    .get('/register', function(req, res) {
+        res.sendFile(path.join(__dirname + '/public/signup.html'));
+    })
+    .get('/blog', function(req, res) {
+        res.sendFile(path.join(__dirname + '/public/blogpage.html'));
+    })
+    .get('/post', function(req, res) {
+        res.sendFile(path.join(__dirname + '/public/post.html'));
+    })
+    .get('/profile', function(req, res) {
+        res.sendFile(path.join(__dirname + '/public/profile.html'));
+    })
+    .get('/home', function(req, res) {
+        res.sendFile(path.join(__dirname + '/public/index.html'));
+    })
+    .get('/index', function(req, res) {
+        res.sendFile(path.join(__dirname + '/public/index.html'));
+    })
+
+
+    //check login
+    .post('/api/login', async (req, res) => {
+        console.log('login start');
+        let email = req.body.email;
+        let psw = req.body.psw;
+        let c_psw;
+        client = await pool.connect();
+        result = await client.query("SELECT * FROM user_account WHERE username = $1",[email]);
+        console.log("result:", JSON.stringify(result.rows));
+        c_psw = result.rows[0].pwd;
+        console.log(`check ${email} : if ${psw} = ${c_psw}`);
+        client.release();
+        if(psw===c_psw){
+            console.log(1);
+            res.json(true);
+        }else{
+            console.log(2);
+            res.json(false);
+        }
+        console.log('login end');
+    })
+    //check register
+    .post('/api/register', async (req, res) => {
+        console.log('register start');
+        let email = req.body.email;
+        let psw = req.body.psw;
+        console.log(`register: ${email} ${psw}`);
+        client = await pool.connect();
+        result = await client.query("INSERT INTO user_account VALUES ($1, $2, $3, $4);",[email,psw,"images/akari.jpg","I'm a new user."]);
+        client.release();
+        console.log('register end');
+    })
+    
 
     //Retrieving data from database and show it in the homepage html
     .get('/homepage', async (req, res) => {

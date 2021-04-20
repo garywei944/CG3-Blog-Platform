@@ -78,7 +78,16 @@ img.avatar {
   padding: 16px;
 }
 
-.inputtext{
+#emailinput{
+  margin: 10px;
+  display: block;
+  /* text-align: center; */
+  position: relative;
+  left: -128px;
+  top: 5px;
+}
+
+#pswinput{
   margin: 10px;
   display: block;
   /* text-align: center; */
@@ -96,7 +105,6 @@ img.avatar {
 
 #bottom{
   height: 100vh;
-  border: 1px solid black;
   background-color: #1e90ff;
   box-sizing: border-box;
 }
@@ -133,4 +141,13 @@ h1{
 #loginMesg{
   position: relative;
   top:-7px;
+}
+
+#empty{
+  color: rgba(0, 0, 0, 0);
+  height: 50px;
+  background-color: #1e90ff;
+  box-sizing: border-box;
+  text-align: center;
+  margin: auto;
 }

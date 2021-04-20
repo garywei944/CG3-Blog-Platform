@@ -1,68 +1,162 @@
-* {box-sizing: border-box}
-
-/* Full-width input fields */
-  input[type=text], input[type=password] {
-  width: 100%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  display: inline-block;
-  border: none;
-  background: #f1f1f1;
+body{
+  margin: 0;
+  padding: 0;
 }
 
-input[type=text]:focus, input[type=password]:focus {
-  background-color: #ddd;
-  outline: none;
+#top{
+  background-color: #1e90ff;
+  border: 1px solid black;
+  box-sizing: border-box;
+  width: 100vw;
+  height: 10vh;
 }
 
-hr {
-  border: 1px solid #f1f1f1;
-  margin-bottom: 25px;
+.right{
+  float: right;
+  margin-right: 10px;
 }
 
-/* Set a style for all buttons */
-button {
+#home{
+  margin-left: 100px;
+  text-decoration: none;
+  font-size: 40px;
+
+}
+
+#newpost {
+  float: right;
+  width: 50px;
+  margin-right: 50px;
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+#circle {
+  color: gray;
+  border-radius: 50%;
+  margin-top: 10px;
+  height: 40px;
+  width: 40px;
+}
+
+
+input[type=text], input[type=password] {
+  width: 300px;
+  padding: 13px 21px;
+  display: block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  margin: auto;
+}
+
+[type=submit] {
   background-color: #4CAF50;
   color: white;
   padding: 14px 20px;
-  margin: 8px 0;
   border: none;
   cursor: pointer;
-  width: 100%;
-  opacity: 0.9;
+  width: 300px;
+  display: block;
+  margin: auto;
 }
 
 button:hover {
-  opacity:1;
+  opacity: 0.8;
 }
 
-/* Extra styles for the cancel button */
-.cancelbtn {
-  padding: 14px 20px;
-  background-color: #f44336;
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
 }
 
-/* Float cancel and signup buttons and add an equal width */
-.cancelbtn, .signupbtn {
-  float: left;
-  width: 50%;
+img.avatar {
+  width: 200px;
+  border-radius: 50%;
 }
 
-/* Add padding to container elements */
 .container {
   padding: 16px;
 }
 
-/* Clear floats */
-.clearfix::after {
-  content: "";
-  clear: both;
-  display: table;
+#emailinput{
+  margin: 10px;
+  display: block;
+  /* text-align: center; */
+  position: relative;
+  left: -128px;
+  top: 5px;
 }
 
-/* Change styles for cancel button and signup button on extra small screens */
-@media screen and (max-width: 300px) {
-  .cancelbtn, .signupbtn {
-    width: 100%;
-  }
+#pswinput{
+  margin: 10px;
+  display: block;
+  /* text-align: center; */
+  position: relative;
+  left: -110px;
+  top: 5px;
+}
+
+#psw-repeatinput{
+  margin: 10px;
+  display: block;
+  /* text-align: center; */
+  position: relative;
+  left: -80px;
+  top: 5px;
+}
+
+#inputblock{
+  margin-bottom: 20px;
+}
+
+#submitblock{
+}
+
+#bottom{
+  height: 100vh;
+  background-color: #1e90ff;
+  box-sizing: border-box;
+}
+
+#register{
+  background-color: rgba(255, 255, 255, 0.6);
+  box-sizing: border-box;
+  width: 400px;
+  text-align: center;
+  margin: auto;
+}
+
+h1{
+  position: relative;
+  top: 10px;
+}
+
+#mesgblock{
+  position: relative;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  color: rgb(255, 68, 68);
+}
+
+#signup {
+  font-size: 85%;
+  position: relative;
+  color:rgba(73, 73, 73, 0.6);
+  text-decoration: none;
+  left: 68px;
+  top: 5px;
+}
+
+#loginMesg{
+  position: relative;
+  top:-7px;
+}
+
+#empty{
+  color: rgba(0, 0, 0, 0);
+  height: 50px;
+  background-color: #1e90ff;
+  box-sizing: border-box;
+  text-align: center;
+  margin: auto;
 }
