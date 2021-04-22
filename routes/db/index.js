@@ -1,6 +1,6 @@
 // Set up db loop up page rendering routes
 
-const db = require('../../db')
+const db = require('~/db')
 
 module.exports = app => {
     app
