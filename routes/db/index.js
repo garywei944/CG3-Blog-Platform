@@ -1,6 +1,6 @@
 // Set up db loop up page rendering routes
 
-const db = require('~/db')
+const db = require(appRoot + '/db')
 
 module.exports = app => {
     app
@@ -48,7 +48,7 @@ module.exports = app => {
         //Retrieving Blog Content from database and show it in the blogpage html
         .get('/db/post/:post_id', async (req, res) => {
             try {
-                const cond = "SELECT content FROM post WHERE post_id='" + req.params.post_id + "';"; 
+                const cond = "SELECT content FROM post WHERE post_id='" + req.params.post_id + "';";
                 const result = await db.query(cond);
                 const results = (result) ? result.rows : null;
                 console.log(results);

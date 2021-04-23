@@ -21,19 +21,18 @@
     "url": "https://github.com/garywei944/cs326_final_project/issues"
   },
   "homepage": "https://github.com/garywei944/cs326_final_project#readme",
-  "engines": {
-    "node": "14.x",
-    "npm": "7.x"
-  },
   "dependencies": {
     "ejs": "^3.1.6",
     "express": "^4.17.1",
     "express-promise-router": "^4.1.0",
-    "pg": "^8.6.0",
-    "wavy": "^1.0.4"
+    "pg": "^8.6.0"
   },
   "devDependencies": {
     "got": "^11.8.2",
     "tape": "^5.2.2"
+  },
+    "engines": {
+    "node": "14.x",
+    "npm": "7.x"
   }
 }

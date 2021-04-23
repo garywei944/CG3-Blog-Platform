@@ -1,5 +1,5 @@
 const Router = require('express-promise-router');
-const db = require('~/db');
+const db = require(appRoot + '/db')
 const router = new Router();
 
 router

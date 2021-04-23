@@ -1,6 +1,8 @@
 const express = require('express');
 const path = require('path');
 const PORT = process.env.PORT || 5000;
+global.appRoot = path.resolve(__dirname);
+
 const mountRoutes = require('./routes');
 
 const app = express();
