@@ -21,6 +21,10 @@
     "url": "https://github.com/garywei944/cs326_final_project/issues"
   },
   "homepage": "https://github.com/garywei944/cs326_final_project#readme",
+  "engines": {
+    "node": "14.x",
+    "npm": "7.x"
+  },
   "dependencies": {
     "ejs": "^3.1.6",
     "express": "^4.17.1",
