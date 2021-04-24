@@ -20,7 +20,7 @@ $(document).ready(function () {
 
 
     $(".wl").click(function () {
-        window.location.href = 'blogpage.html';
+        window.location.href = 'blogpage.html'; // handle this - distriubte to customized url depending on the post id/title
     });
 
 });
