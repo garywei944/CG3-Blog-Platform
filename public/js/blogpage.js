@@ -1,6 +1,8 @@
 
 $(document).ready(function() {
 
+    // TODO: change all of these to AJAX requests
+
     // click on the circle profile pic => switch to profile page 
     $(".circle").click(function(){
         window.location.href='profile.html'; // switch to profile page instead (when we have one)
@@ -17,8 +19,8 @@ $(document).ready(function() {
     });
 
     // click on "favorite"
-    $("#favorite").click(function() {
-        alert("added to favorite the post")
+    $("#follow").click(function() {
+        alert("followed the blogger")
     });
 });
 
