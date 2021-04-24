@@ -2,30 +2,35 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
     <link href="css/blogpage.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="js/blogpage.js"></script>
 </head>
 
 <body>
-    <div id="top">
-        <a id="home" href="index.html">Home</a>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+        <a class="navbar-brand" href="index.html">CG3</a>
 
-        <button id="newpost" class="right" onclick="window.location.href='post.html';">New Post</button>
-        <a href="index.html">
-            <button id="circle-profile" class="circle"></button>
+        <a href="profile.html" class="navbar-nav ml-auto">
+            <img src="images/akari.jpg" alt="Profile Picture" width="40" height="40" class="rounded-circle">
         </a>
-    </div>
+        <a href="post.html" class="navbar-link btn btn-outline-light ml-2">New Post</a>
+    </nav>
 
     <div id="blogBody">
         <div id="blogContent">
-            <button id="circle-blog" class="circle"></button>
-            <!-- <p>Dynamically Adding the Blog Content from javascript</p> -->
+            <a href="profile.html" class="navbar-nav ml-auto">
+                <img src="images/akari.jpg" alt="Profile Picture" width="40" height="40" class="rounded-circle">
+            </a>
+            <p>Dynamically Adding the Blog Content from javascript</p>
+            <div id='blogtext'></div>
         </div>
     </div>
 
     <div id="bottom">
-        <div class="btn-group">
+        <div class="button-group">
             <button id="readLater" style="width:33%">Read Later</button>
             <button id="like" style="width:33%">Like</button>
             <button id="favorite" style="width:33%">Favorite</button>

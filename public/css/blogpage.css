@@ -1,74 +1,26 @@
 body{
     margin: 0;
     padding: 0;
-}
-
-#top{
-    background-color: #1e90ff;
-    border: 1px solid black;
-    box-sizing: border-box;
-    width: 100vw;
-    height: 10vh;
-}
-
-#home{
-    margin-left: 100px;
-    text-decoration: none;
-    font-size: 40px;
-
-}
-
-#newpost{
-    float: right;
-    width: 50px;
-    margin-right: 50px;
-    margin-top: 10px;
-    font-size: 16px;
-}
-
-.circle{
-    color: gray;
-    border-radius: 50%;
-    margin-top: 10px;
-    height: 40px;
-    width: 40px;
-}
-
-#circle-profile {
-    float: right;
-}
-
-#circle-blog {
-    margin: 40px;
-}
-
-#blogBody {
-    /* height:  100vh; */
-    /* background-color: red; */
+    background-color: rgb(150, 185, 238);
 }
 
 #blogContent {
     height: 70vh;
-    border-radius: 5vh;
+    border-radius: 1vh;
     margin: 5vh;
-    background-color: rgb(192, 188, 188);
+    background-color: rgb(183, 196, 209);
 }
 
-#bottom {
-    height: 10vh;
-    background-color: khaki;
-}
-
-.btn-group button {
+.button-group button {
     background-color: #4CAF50; /* Green background */
     border: none; 
     color: white; 
     padding: 20px 48px; 
-    cursor: pointer; /* Pointer/hand icon */
+    cursor: pointer; 
     /* display: flex;
-    justify-content: center;         */
+    justify-content: center;  */
 }
 
-.btn-group button:hover {
+.button-group button:hover {
     background-color: #3e8e41;
 }
