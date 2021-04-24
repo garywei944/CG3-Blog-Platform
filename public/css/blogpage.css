@@ -11,14 +11,16 @@ body{
     background-color: rgb(183, 196, 209);
 }
 
+#blogtext {
+    margin: 30px;
+}
+
 .button-group button {
     background-color: #4CAF50; /* Green background */
     border: none; 
     color: white; 
     padding: 20px 48px; 
     cursor: pointer; 
-    /* display: flex;
-    justify-content: center;  */
 }
 
 .button-group button:hover {
