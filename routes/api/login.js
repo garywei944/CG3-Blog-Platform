@@ -22,7 +22,7 @@ router
         }
         console.log('login end');
     })
-    .post('/register', async (req, res) => {
+    .post('/register', async (req, res) => { // should be '/signup' instead? -Genglin
         console.log('register start');
         let email = req.body.email;
         let psw = req.body.psw;
