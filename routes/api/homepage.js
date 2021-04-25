@@ -4,7 +4,7 @@ const router = new Router();
 
 router
     //Retrieving data from database and show it in the homepage html
-    .get('/api/homepage', async (req, res) => {
+    .get('/homepage', async (req, res) => {
         try {
             const result = await db.query('SELECT title, post_id FROM post ORDER BY random() LIMIT 6');
             const results = (result) ? result.rows : null;
