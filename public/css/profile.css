@@ -1,9 +1,6 @@
-#avatar {
-    /*padding-top: 1em;*/
-}
-
-#info {
-    height: 20vh;
+.profile-button {
+    background-color: #66ccff;
+    color: black;
 }
 
 #username {
@@ -12,4 +9,5 @@
 
 #bio {
     overflow-y: auto;
+    height: 12em;
 }
