@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>User profile</title>
+    <title><%- username %> - CG3</title>
 
     <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/>
 
@@ -18,7 +18,7 @@
 
     <div class="row mt-3">
         <div id="avatar" class="col-sm-4 text-center">
-            <img src="<%- avatar %>" alt="Profile Image" class="rounded-circle border border-dark img-fluid">
+            <img src="<%- img_url %>" alt="Profile Image" class="rounded-circle border border-dark img-fluid">
         </div>
         <div id="info" class="col-sm-8">
 
@@ -73,9 +73,7 @@
 
 </div>
 
-<div class="container mt-2">
-    <%- include(appRoot+'/views/partials/footer') %>
-</div>
+<%- include(appRoot+'/views/partials/footer') %>
 
 
 <script src="js/jquery-3.6.0.min.js"></script>

@@ -1,6 +1,13 @@
 # Gary
 
- ☐ Post page text editor
+## Common
  ☐ Better nav bar
- ☐ Use ejs for the nav bar
- ☐ User profile css design
+ ✔ Use ejs for the nav bar @done (21-04-25 06:23)
+
+## profile
+ ✔ User profile css design @done (21-04-25 06:24)
+ ☐ Followers, Following, Edit button functionality
+ ☐ My blogs, Liked, Favorite, Recent button functionality
+
+## post
+ ☐ Post page text editor

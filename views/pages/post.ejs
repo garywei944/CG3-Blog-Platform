@@ -12,15 +12,7 @@
 
 <body>
 
-<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
-    <a class="navbar-brand" href="index.html">CG3</a>
-
-    <!--    TODO: link to the api of profile and change profile picture-->
-    <a href="profile.html" class="navbar-nav ml-auto">
-        <img src="images/akari.jpg" alt="Profile Picture" width="40" height="40" class="rounded-circle">
-    </a>
-    <a href="post.html" class="navbar-link btn btn-outline-light ml-2">New Post</a>
-</nav>
+<%- include(appRoot+'/views/partials/nav') %>
 
 <div class="container">
     <!--    TODO: Implement the rich text editor-->
@@ -36,6 +28,9 @@
         </div>
     </form>
 </div>
+
+<%- include(appRoot+'/views/partials/footer') %>
+
 
 <script src="js/jquery-3.6.0.min.js"></script>
 <script src="js/bootstrap.min.js"></script>

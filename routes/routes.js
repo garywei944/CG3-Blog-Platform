@@ -12,6 +12,9 @@ router
     .get('/signup', function (req, res) {
         res.sendFile(appRoot + '/public/signup.html');
     })
+    .get('/post', function (req, res) {
+        res.render('pages/post', {});
+    })
     .get('/:username', async function (req, res) {
         const username = req.params.username
 
@@ -21,11 +24,10 @@ router
 
             result = await db.query("select * from user_account where username = $1", [username]);
             const user_data = result ? result.rows[0] : null;
-            console.log(user_data);
 
             const data = {
                 username: username,
-                avatar: 'images/akari.jpg',
+                img_url: 'images/akari.jpg',
                 bio: user_data.bio,
                 posts: posts
             };
