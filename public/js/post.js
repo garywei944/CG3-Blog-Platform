@@ -14,7 +14,7 @@ $(function () {
             }
         })
         .then(editor => {
-            editor.setData("What's in your mind today?");
+            editor.setData("What's on your mind today?");
 
             $(".ck-editor").addClass('col-12');
 
