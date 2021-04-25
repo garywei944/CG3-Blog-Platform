@@ -15,6 +15,8 @@
 
 
     function checkvalidate(){
+        $username = $("#username");
+        username = $username.val().trim();
         $email = $("#email");
         email = $email.val().trim();
         $psw = $("#psw");
@@ -22,8 +24,8 @@
         $psw_repeat = $("#psw-repeat");
         psw_repeat = $psw_repeat.val();
         let pattern = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
-        if (psw.length < 6||!pattern.test($email.val())||psw!==psw_repeat) {
-            $("#loginMesg").text(`invalid Email or Password`);
+        if (psw.length < 6||!pattern.test($email.val())||psw!==psw_repeat||username.length < 1) {
+            $("#loginMesg").text(`invalid Username, Email or Password`);
         }
         else {
             $("#loginMesg").css('color', 'green');
@@ -31,7 +33,7 @@
             $.ajax({
                 method: "POST",
                 url: "/api/register",
-                data:JSON.stringify({"email":email,"psw":psw}),
+                data:JSON.stringify({"username":username,"email":email,"psw":psw}),
                 contentType: "application/json"
             }).done(function(data) {
                 $("#loginMesg").text("Done!");

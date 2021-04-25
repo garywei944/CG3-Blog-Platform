@@ -78,16 +78,7 @@ img.avatar {
   padding: 16px;
 }
 
-#emailinput{
-  margin: 10px;
-  display: block;
-  /* text-align: center; */
-  position: relative;
-  left: -128px;
-  top: 5px;
-}
-
-#pswinput{
+#usernameinput{
   margin: 10px;
   display: block;
   /* text-align: center; */
@@ -96,12 +87,30 @@ img.avatar {
   top: 5px;
 }
 
+#emailinput{
+  margin: 10px;
+  display: block;
+  /* text-align: center; */
+  position: relative;
+  left: -127px;
+  top: 5px;
+}
+
+#pswinput{
+  margin: 10px;
+  display: block;
+  /* text-align: center; */
+  position: relative;
+  left: -112px;
+  top: 5px;
+}
+
 #psw-repeatinput{
   margin: 10px;
   display: block;
   /* text-align: center; */
   position: relative;
-  left: -80px;
+  left: -83px;
   top: 5px;
 }
 
@@ -124,6 +133,7 @@ img.avatar {
   width: 400px;
   text-align: center;
   margin: auto;
+  border-radius: 4px;
 }
 
 h1{
