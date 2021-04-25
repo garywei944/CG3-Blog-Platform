@@ -11,55 +11,49 @@
             integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
             crossorigin="anonymous"></script>
     <script src="js/signup.js" defer></script>
-    <script src="js/post.js" defer></script>
 </head>
 
 <body>
 
-<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
-    <a class="navbar-brand" href="index.html">CG3</a>
+    <div id="nav"></div>
+    <script>
+        $("#nav").load("common/nav.html");
+    </script>
+    <div id="empty"></div>
+    <div id="bottom">
+        <div id="register">
+            <h1>Register</h1>
+            <div class="container">
+                <div id="inputblock">
+                    <label for="username" id="usernameinput"><b>Username</b></label>
+                    <input type="text" name="username" id="username" placeholder="Enter username" required>
+                </div>
 
-    <!--    TODO: link to the api of profile and change profile picture-->
-    <a href="profile.html" class="navbar-nav ml-auto">
-        <img src="images/akari.jpg" alt="Profile Picture" width="40" height="40" class="rounded-circle">
-    </a>
-    <a href="post.html" class="navbar-link btn btn-outline-light ml-2">New Post</a>
-</nav>
-<div id="empty"></div>
-<div id="bottom">
-    <div id="register">
-        <h1>Register</h1>
-        <div class="container">
-            <div id="inputblock">
-                <label for="username" id="usernameinput"><b>Username</b></label>
-                <input type="text" name="username" id="username" placeholder="Enter username" required>
-            </div>
+                <div id="inputblock">
+                    <label for="email" id="emailinput"><b>Email</b></label>
+                    <input type="text" name="email" id="email" placeholder="Enter email" required>
+                </div>
 
-            <div id="inputblock">
-                <label for="email" id="emailinput"><b>Email</b></label>
-                <input type="text" name="email" id="email" placeholder="Enter email" required>
-            </div>
+                <div id="inputblock">
+                    <label for="psw" id="pswinput"><b>Password</b></label>
+                    <input type="password" name="psw" id="psw" placeholder="Enter Password" required>
+                </div>
 
-            <div id="inputblock">
-                <label for="psw" id="pswinput"><b>Password</b></label>
-                <input type="password" name="psw" id="psw" placeholder="Enter Password" required>
-            </div>
+                <div id="inputblock">
+                    <label for="psw-repeat" id="psw-repeatinput"><b>Repeat Password</b></label>
+                    <input type="password" name="psw-repeat" id="psw-repeat" placeholder="Enter Password" required>
+                </div>
 
-            <div id="inputblock">
-                <label for="psw-repeat" id="psw-repeatinput"><b>Repeat Password</b></label>
-                <input type="password" name="psw-repeat" id="psw-repeat" placeholder="Enter Password" required>
-            </div>
+                <div id="mesgblock">
+                    <p id="loginMesg"></p>
+                </div>
 
-            <div id="mesgblock">
-                <p id="loginMesg"></p>
-            </div>
-
-            <div id="submitblock">
-                <button type="submit" id="submit">Register</button>
+                <div id="submitblock">
+                    <button type="submit" id="submit">Register</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
 
 </body>

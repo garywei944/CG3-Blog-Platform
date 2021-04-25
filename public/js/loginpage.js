@@ -35,9 +35,9 @@ function getCookie(c_name){
 function checkCookie(c_name){
     var cookie=getCookie(c_name);
     if (cookie!=null && cookie!=""){
-        return cookie
+        return cookie;
     }else{
-        console.log('cookie不存在') 
+        return false; 
     }
 }
 
@@ -65,7 +65,7 @@ function checkvalidate(){
             contentType: "application/json"
         }).done(function(data) {
             if(data){
-                setCookie(username,username,1);
+                setCookie("cg3",username,1);
                 $("#loginMesg").text('Done!');
                 window.location.href = '/';
             }else{

@@ -2,7 +2,7 @@
 // 
 // 
 // 
-
+    
 
 
     $("#newpost").click(function (){
