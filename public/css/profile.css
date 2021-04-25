@@ -1,6 +1,7 @@
 .profile-button {
     background-color: #66ccff;
     color: black;
+    font-size: 1.2em;
 }
 
 #username {
@@ -10,4 +11,12 @@
 #bio {
     overflow-y: auto;
     height: 12em;
+}
+
+#post_nav > div:nth-of-type(odd) {
+    background-color: #f6a4ec;
+}
+
+#post_nav > div:nth-of-type(even) {
+    background-color: #97fbd1;
 }
