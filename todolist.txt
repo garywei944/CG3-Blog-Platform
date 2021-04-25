@@ -1,0 +1,6 @@
+# Gary
+
+ ☐ Post page text editor
+ ☐ Better nav bar
+ ☐ Use ejs for the nav bar
+ ☐ User profile css design
