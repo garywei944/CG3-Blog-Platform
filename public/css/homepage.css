@@ -3,13 +3,6 @@ body{
     padding: 0;
 }
 
-#top{
-    background-color: #1e90ff;
-    border: 1px solid black;
-    box-sizing: border-box;
-    width: 100vw;
-    height: 10vh;
-}
 
 #bottomLeft{
     background-color: gray;

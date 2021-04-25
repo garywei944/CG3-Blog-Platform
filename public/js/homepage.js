@@ -11,16 +11,15 @@ $(document).ready(function () {
     });
 
     $("#newpost").click(function () {
-        window.location.href = 'post.html';
+        window.location.href = '/post';
     });
 
     $("#home").click(function () {
-        window.location.href = 'index.html';
+        window.location.href = '/';
     });
 
-
     $(".wl").click(function () {
-        window.location.href = 'blogpage.html'; // handle this - distriubte to customized url depending on the post id/title
+        window.location.href = 'blogpage.html'; // handle this - distribute to customized url depending on the post id/title
     });
 
 });
