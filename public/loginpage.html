@@ -3,56 +3,59 @@
 <head>
     <title>Login page</title>
     <link href="./css/loginpage.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+          integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <meta charset="UTF-8">
-    <script src = "./js/loginpage.js" defer></script>
-    <script src="js/jquery-3.6.0.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+    <script src="./js/loginpage.js" defer></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+            crossorigin="anonymous"></script>
     <script src="js/post.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 </head>
 
 <body>
 
-    <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
-        <a class="navbar-brand" href="index.html">CG3</a>
-    
-        <!--    TODO: link to the api of profile and change profile picture-->
-        <a href="profile.html" class="navbar-nav ml-auto">
-            <img src="images/akari.jpg" alt="Profile Picture" width="40" height="40" class="rounded-circle">
-        </a>
-        <a href="post.html" class="navbar-link btn btn-outline-light ml-2">New Post</a>
-    </nav>
-    <div id = "empty"></div>
-    <div id = "bottom">
-        <div id = "login">
-            <h1>Login</h1>
-            <div class="imgcontainer">
-                <img src="./images/akari.jpg" alt="Avatar" class="avatar">
+<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+    <a class="navbar-brand" href="index.html">CG3</a>
+
+    <!--    TODO: link to the api of profile and change profile picture-->
+    <a href="profile.html" class="navbar-nav ml-auto">
+        <img src="images/akari.jpg" alt="Profile Picture" width="40" height="40" class="rounded-circle">
+    </a>
+    <a href="post.html" class="navbar-link btn btn-outline-light ml-2">New Post</a>
+</nav>
+<div id="empty"></div>
+<div id="bottom">
+    <div id="login">
+        <h1>Login</h1>
+        <div class="imgcontainer">
+            <img src="./images/akari.jpg" alt="Avatar" class="avatar">
+        </div>
+
+        <div class="container">
+            <div id="inputblock">
+                <label for="email" id="emailinput"><b>Email</b></label>
+                <input type="text" name="email" id="email" placeholder="Enter email" required>
             </div>
 
-            <div class="container">
-                <div id = "inputblock">
-                    <label for="email" id = "emailinput"><b>Email</b></label>
-                    <input type="text" name="email" id="email" placeholder="Enter email" required>
-                </div>
-
-                <div id = "inputblock">
-                    <label for="psw" id = "pswinput"><b>Password</b></label>
-                    <input type="password" name="psw" id = "psw" placeholder="Enter Password" required>
-                </div>
-
-                <div id = "mesgblock">
-                    <p id = "loginMesg"></p>
-                </div>
-
-                <div id = "submitblock">
-                    <button type="submit" id="submit">Login</button>
-                </div>
-                <a id="signup" href="#">New User? Sign Up Here!</a>
+            <div id="inputblock">
+                <label for="psw" id="pswinput"><b>Password</b></label>
+                <input type="password" name="psw" id="psw" placeholder="Enter Password" required>
             </div>
+
+            <div id="mesgblock">
+                <p id="loginMesg"></p>
+            </div>
+
+            <div id="submitblock">
+                <button type="submit" id="submit">Login</button>
+            </div>
+            <a id="signup" href="#">New User? Sign Up Here!</a>
         </div>
     </div>
+</div>
 
 
 </body>
