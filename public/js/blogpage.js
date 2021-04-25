@@ -41,7 +41,8 @@ $(document).ready(function() {
         $.ajax({
             type: "POST",
             url: "/api/blogpage_backend/",
-            data: input,
+            data:JSON.stringify(input),
+            contentType: "application/json"
         })
         .done(function(data) {
             // Successfully deleted entree

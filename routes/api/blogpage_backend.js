@@ -5,11 +5,11 @@ const router = new Router();
 // TODO: handle the two requests and insert them into database
 router
     // click on "like" - add 'this' user and 'this blog' to the sql table 'liked'
-    .get('/blogpage_backened', async (req, res) => {
+    .post('/blogpage_backened', async (req, res) => {
         console.log('here');
         let user_id = req.body.user_id;
         let post_id = req.body.post_id;
-        let result = await db.query("INSERT INTO like VALUES ($1, $2);", [user_id, post_id]);
+        let result = await db.query("INSERT INTO liked VALUES ($1, $2);", [user_id, post_id]);
         
         console.log("result:", JSON.stringify(result.rows));
     })
