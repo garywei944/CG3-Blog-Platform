@@ -1,3 +1,5 @@
+// noinspection ExceptionCaughtLocallyJS
+
 const Router = require('express-promise-router');
 const db = require(appRoot + '/db')
 const router = new Router();
@@ -19,11 +21,14 @@ router
         const username = req.params.username
 
         try {
-            let result = await db.query("select * from post where username = $1", [username]);
-            const posts = result ? result.rows : null;
-
-            result = await db.query("select * from user_account where username = $1", [username]);
+            let result = await db.query("select * from user_account where username = $1", [username]);
             const user_data = result ? result.rows[0] : null;
+
+            // throw error if the database return 0 results
+            if (!user_data) throw new Error('No user profile with username - ' + username);
+
+            result = await db.query("select * from post where username = $1", [username]);
+            const posts = result ? result.rows : null;
 
             const data = {
                 username: username,
@@ -35,7 +40,7 @@ router
             res.render("pages/profile", data);
         } catch (err) {
             console.error(err);
-            res.status(400);
+            res.status(404);
             res.send("Error " + err);
         }
     })
