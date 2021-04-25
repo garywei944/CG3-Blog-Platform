@@ -3,6 +3,7 @@
 ## Common
  ☐ Better nav bar
  ✔ Use ejs for the nav bar @done (21-04-25 06:23)
+ ☐ Check user login status
 
 ## profile
  ✔ User profile css design @done (21-04-25 06:24)
@@ -10,4 +11,5 @@
  ☐ My blogs, Liked, Favorite, Recent button functionality
 
 ## post
- ☐ Post page text editor
+ ✔ Post page text editor @done (21-04-25 09:11)
+ ☐ Post the new blog to /api/post
