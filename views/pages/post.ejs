@@ -17,14 +17,13 @@
 <%- include(appRoot+'/views/partials/nav') %>
 
 <div class="container">
-    <!--    TODO: Implement the rich text editor-->
-    <form action="">
-        <div class="row">
-            <div id="editor" class="col-12">
-                <p>This is some sample content.</p>
-            </div>
-            <button class="btn btn-primary offset-md-9 col-md-2 mt-2">Submit</button>
+    <form action="/api/post" method="post" target="_blank">
+        <div class="form-group mt-sm-4 title">
+            <label for="title" class="title"> </label>
+            <input type="text" name="title" id="title" class="col-sm-8" placeholder="Title...">
         </div>
+        <div id="editor"></div>
+        <button id="submit" class="btn btn-primary offset-md-9 col-md-2 mt-2">Submit</button>
     </form>
 </div>
 
