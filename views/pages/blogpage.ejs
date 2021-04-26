@@ -15,7 +15,7 @@
 
     <div id="blogBody">
         <div id="blogContent">
-            <a href="profile.html" class="navbar-nav ml-auto">
+            <a href="" id="avatar-inpost">
                 <img src="/images/akari.jpg" alt="Profile Picture" width="40" height="40" class="rounded-circle">
             </a>
             <div id="blogtext"><%= content %></div>
@@ -29,6 +29,12 @@
             <button id="readLater" style="width:33%">Read Later</button>
           </div>
     </div>
+
+    <script>
+        user_cookie = Cookies.get('cg3');
+        let link = ($(location).attr('origin') + "/") + (user_cookie ? user_cookie : "login")
+        $("#avatar-inpost").prop("href", link);
+    </script>
 
 </body>
 </html>

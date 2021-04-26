@@ -1,12 +1,8 @@
 $(document).ready(function() {
 
     let post_id = String(window.location.href).split("/").pop();
-    console.log(post_id)
-
-    // let c_username = checkCookie("cg3");
     let c_username = Cookies.get("cg3");
-    console.log(c_username)
-
+    
     // click on "like" - add 'this' user and 'this blog' to the database table 'liked'
     $('#like').click(function(){                
         const input = {
