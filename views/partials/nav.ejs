@@ -3,15 +3,15 @@
 
     <!--    TODO: link to the api of profile and change profile picture -->
     <a href="" class="navbar-nav ml-auto" id = "avatar">
-        <img src="images/akari.jpg" alt="Profile Picture" width="40" height="40" class="rounded-circle">
+        <img src="/images/akari.jpg" alt="Profile Picture" width="40" height="40" class="rounded-circle">
     </a>
     <script>
         function getCookie(c_name){
             if (document.cookie.length>0){
-                var c_start=document.cookie.indexOf(c_name + "=");
+                let c_start=document.cookie.indexOf(c_name + "=");
                 if (c_start!=-1){
                     c_start=c_start + c_name.length+1;
-                    var c_end=document.cookie.indexOf(";",c_start);
+                    let c_end=document.cookie.indexOf(";",c_start);
                     if (c_end==-1){ 
                         c_end=document.cookie.length;
                     }
@@ -22,20 +22,20 @@
         }
 
         function checkCookie(c_name){
-            var cookie=getCookie(c_name);
+            let cookie=getCookie(c_name);
             if (cookie!=null && cookie!=""){
                 return cookie;
             }else{
-                return false; 
+                return false;
             }
         }
         
-        let username = checkCookie("cg3");
-        console.log(username);
-        if(!username){
+        let c_username = checkCookie("cg3");
+        console.log(c_username);
+        if(!c_username){
             $("#avatar").attr("href","/login");
         }else{
-            $("#avatar").attr("href","/"+username);
+            $("#avatar").attr("href","/"+c_username);
         }
     </script>
     <a href="/post" class="navbar-link btn btn-outline-light ml-2">New Post</a>

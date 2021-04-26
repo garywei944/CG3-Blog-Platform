@@ -6,7 +6,7 @@ $(document).ready(function () {
         })
     }, 'json').done(function(){
             $(".list").click(function () {
-            window.location.href = '/db/post/' + $(this).attr('id');
+            window.location.href = '/post/' + $(this).attr('id');
         });
     });
 });

@@ -19,11 +19,14 @@ router.post('/post', async function (req, res, next) {
         post_time: post_time
     };
 
+    console.log("username: "+username,"title: "+title,"content: "+content);
+
     // Validate the coming package and validate the inert is successful
     if (checkPost(username, title, content)) {
         try {
             const result = await db.query(query_text, [username, title, content, post_time]);
-
+            const post_id = await db.query("SELECT * FROM post WHERE username = $1 AND post_time = $2", [username,post_time]);
+            post_info.post_id = post_id;
             res.status(201);
             res.json(post_info);
         } catch (err) {
