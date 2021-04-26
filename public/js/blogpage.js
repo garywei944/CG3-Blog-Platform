@@ -2,6 +2,11 @@ $(document).ready(function() {
 
     let post_id = String(window.location.href).split("/").pop();
     let c_username = Cookies.get("cg3");
+
+    // get poster id
+    // poster_userid = $("#posterUser").text();
+    // let link = ($(location).attr('origin') + "/") + (poster_userid ? poster_userid : "login")
+    // $("#avatar-inpost").prop("href", link);
     
     // click on "like" - add 'this' user and 'this blog' to the database table 'liked'
     $('#like').click(function(){                
