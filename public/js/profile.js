@@ -65,6 +65,9 @@ $(function (events, handler) {
             if (edited_bio.length === 0) {
                 alert('Nothing to change.');
                 return;
+            } else if (edited_bio.length > 99) {
+                alert('Update failed: Bio takes more than 99 characters!');
+                return;
             }
 
             $.post('/api/' + username + "/edit", {bio: edited_bio}, function (data) {
