@@ -1,3 +1,7 @@
+.main {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
 .profile-button {
     background-color: #66ccff;
     color: black;
@@ -22,10 +26,10 @@
     height: 12em;
 }
 
-#post_nav > button:nth-of-type(odd) {
+#blog_btn, #favorite_btn {
     background-color: #f6a4ec;
 }
 
-#post_nav > button:nth-of-type(even) {
+#liked_btn, #recent_btn {
     background-color: #97fbd1;
 }

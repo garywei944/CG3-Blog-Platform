@@ -18,9 +18,9 @@
 
 <%- include(appRoot+'/views/partials/nav') %>
 
-<div class="container border-left border-right border-dark">
+<div class="container border-left border-right border-dark main">
 
-    <div class="row mt-3">
+    <div class="row pt-3">
         <div id="avatar" class="col-lg-4 text-center">
             <img src="<%- img_url %>" alt="Profile Image" class="rounded-circle border border-dark img-fluid">
         </div>
@@ -29,7 +29,7 @@
             <div id="username" class="col-12 text-center text-lg-left">
                 <p><%- username %></p>
             </div>
-            <div id="bio" class="col-12 border rounded border-dark">
+            <div id="bio" class="col-12 border rounded border-dark bg-white">
                 <p><%- bio %></p>
             </div>
         </div>
@@ -62,7 +62,13 @@
         <div class="col-lg-9">
             <div id="post_nav" class="row text-center">
                 <button id="blog_btn" class="col-lg-3 py-2 btn btn-outline-dark border-0"> My blogs</button>
-                <button id="liked_btn" class="col-lg-3 py-2 btn btn-outline-dark border-0"> Liked</button>
+                <div class="col-lg-3 p-0 btn-group">
+                    <button id="liked_btn" class="py-2 btn btn-outline-dark border-0" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                        Liked
+                    </button>
+                    <div id="liked_dropdown" class="dropdown-menu col-12"></div>
+                </div>
                 <button id="favorite_btn" class="col-lg-3 py-2 btn btn-outline-dark border-0"> Favorite</button>
                 <button id="recent_btn" class="col-lg-3 py-2 btn btn-outline-dark border-0"> Recent</button>
             </div>

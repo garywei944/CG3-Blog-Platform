@@ -1,19 +1,24 @@
+<style>
+    body {
+        background: url('/images/bg.jpg') no-repeat center fixed;
+        background-size: cover;
+
+        padding-top: 3.5em;
+    }
+</style>
+
 <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
 
-<nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+<nav class="navbar fixed-top navbar-expand-sm bg-primary navbar-dark">
     <a class="navbar-brand" href="/">CG3</a>
 
-    <!--    TODO: link to the api of profile and change profile picture -->
     <a href="" class="navbar-nav ml-auto" id="avatar">
         <img src="/images/akari.jpg" alt="Profile Picture" width="40" height="40" class="rounded-circle">
     </a>
+    <a href="" class="navbar-link btn btn-outline-light ml-2" id="post_btn">New Post</a>
     <script>
         let user_cookie = Cookies.get('cg3');
-        $("#avatar").attr("href", ($(location).attr('origin')+ "/") + (user_cookie ? user_cookie : "login"));
-    </script>
-    <a href="" class="navbar-link btn btn-outline-light ml-2" id="postbtn">New Post</a>
-    <script>
-        user_cookie = Cookies.get('cg3');
-        $("#postbtn").attr("href", ($(location).attr('origin')+ "/") + (user_cookie ? "post" : "login"));
+        $("#avatar").prop("href", ($(location).attr('origin') + "/") + (user_cookie ? user_cookie : "login"));
+        $("#post_btn").prop("href", ($(location).attr('origin') + "/") + (user_cookie ? "post" : "login"));
     </script>
 </nav>
