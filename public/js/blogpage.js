@@ -1,5 +1,11 @@
 
+
 $(document).ready(function() {
+
+    let post_id = String(window.location.href).split("/").pop();
+    console.log(post_id)
+
+    console.log(user_cookie)
     
     // click on "like" - add 'this' user and 'this blog' to the database table 'liked'
     $('#like').click(function(){                
@@ -8,7 +14,7 @@ $(document).ready(function() {
 
         const input = {
             user_id: "Alex",
-            post_id: 1
+            post_id: post_id
         };
     
         console.log(input);
