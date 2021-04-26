@@ -3,13 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>New post</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
           integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
     <link rel="stylesheet" href="css/post.css">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/27.1.0/classic/ckeditor.js"></script>
 
 </head>
 
@@ -17,9 +22,9 @@
 
 <%- include(appRoot+'/views/partials/nav') %>
 
-<div class="container">
+<div class="container main pb-2">
     <form id="post_form">
-        <div class="form-group mt-sm-4 title">
+        <div class="form-group pt-sm-4 title">
             <label for="title" class="title"> </label>
             <input type="text" name="title" id="title" class="col-sm-8" placeholder="Title...">
         </div>
@@ -31,11 +36,6 @@
 <%- include(appRoot+'/views/partials/footer') %>
 
 
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns"
-        crossorigin="anonymous"></script>
-<script src="https://cdn.ckeditor.com/ckeditor5/27.1.0/classic/ckeditor.js"></script>
 <script src="js/post.js"></script>
 
 </body>

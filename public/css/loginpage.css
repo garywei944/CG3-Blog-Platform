@@ -4,7 +4,7 @@ body{
 }
 
 #top{
-  background-color: #1e90ff;
+  /*background-color: #1e90ff;*/
   border: 1px solid black;
   box-sizing: border-box;
   width: 100vw;
@@ -103,12 +103,12 @@ img.avatar {
 
 #bottom{
   height: 100vh;
-  background-color: #1e90ff;
+  /*background-color: #1e90ff;*/
   box-sizing: border-box;
 }
 
 #login{
-  background-color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(255, 255, 255, 0.8);
   box-sizing: border-box;
   width: 400px;
   text-align: center;
@@ -143,9 +143,9 @@ h1{
 }
 
 #empty{
-  color: rgba(0, 0, 0, 0);
+  /*color: rgba(0, 0, 0, 0);*/
   height: 50px;
-  background-color: #1e90ff;
+  /*background-color: #1e90ff;*/
   box-sizing: border-box;
   text-align: center;
   margin: auto;
