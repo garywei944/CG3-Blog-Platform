@@ -13,10 +13,10 @@ router.post('/post', async function (req, res, next) {
     const post_time = new Date();
 
     const post_info = {
-        username: username,
-        title: title,
-        content: content,
-        post_time: post_time
+        "username": username,
+        "title": title,
+        "content": content,
+        "post_time": post_time
     };
 
     console.log("username: "+username,"title: "+title,"content: "+content);
@@ -25,10 +25,11 @@ router.post('/post', async function (req, res, next) {
     if (checkPost(username, title, content)) {
         try {
             const result = await db.query(query_text, [username, title, content, post_time]);
-            const post_id = await db.query("SELECT * FROM post WHERE username = $1 AND post_time = $2", [username,post_time]);
-            post_info.post_id = post_id;
+            const result2 = await db.query("SELECT * FROM post WHERE username = $1 AND post_time = $2", [username,post_time]);
+            let post_id = result2.rows[0].post_id;
+            console.log("post_id: "+post_id);
             res.status(201);
-            res.json(post_info);
+            res.json(post_id);
         } catch (err) {
             console.error(err);
             res.status(400);
