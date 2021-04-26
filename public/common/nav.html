@@ -37,6 +37,11 @@
         }else{
             $("#avatar").attr("href","/"+c_username);
         }
+
+        $("#avatar").attr("href", ($(location).attr('origin')+ "/") + (c_username ? c_username : "login"));
     </script>
-    <a href="/post" class="navbar-link btn btn-outline-light ml-2">New Post</a>
+    <a href="/post" class="navbar-link btn btn-outline-light ml-2"id="postbutt">New Post</a>
+    <script>
+        $("#postbutt").attr("href", ($(location).attr('origin')+ "/") + (c_username ? "post" : "login"));
+    </script>
 </nav>

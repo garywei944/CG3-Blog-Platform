@@ -2,7 +2,12 @@
 // 
 // 
 // 
-    
+    //cookie manipulation
+    function setCookie(c_name,value,expiredays){
+        var exdate=new Date();
+        exdate.setDate(exdate.getDate()+expiredays);
+        document.cookie=c_name+ "=" +escape(value)+((expiredays==null) ? "" : ";expires="+exdate.toGMTString())
+    }
 
 
     $("#newpost").click(function (){
@@ -36,6 +41,7 @@
                 data:JSON.stringify({"username":username,"email":email,"psw":psw}),
                 contentType: "application/json"
             }).done(function(data) {
+                setCookie("cg3",username,1);
                 $("#loginMesg").text("Done!");
                 window.location.href = 'https://stark-tor-10041.herokuapp.com/';
             }).fail(function(jqXHR) {

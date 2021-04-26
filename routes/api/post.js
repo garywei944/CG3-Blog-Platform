@@ -18,8 +18,7 @@ router.post('/post', async function (req, res, next) {
         "content": content,
         "post_time": post_time
     };
-
-    console.log("username: "+username,"title: "+title,"content: "+content);
+    console.log("post started");
 
     // Validate the coming package and validate the inert is successful
     if (checkPost(username, title, content)) {
