@@ -40,14 +40,10 @@ router
             // throw error if the database return 0 results
             if (!user_data) throw new Error('No user profile with username - ' + username);
 
-            result = await db.query("select * from post where username = $1", [username]);
-            const posts = result ? result.rows : null;
-
             const data = {
                 username: username,
                 img_url: 'images/akari.jpg',
                 bio: user_data.bio,
-                posts: posts
             };
 
             res.render("pages/profile", data);
