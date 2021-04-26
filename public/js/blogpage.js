@@ -39,6 +39,10 @@ $(document).ready(function() {
             this_user_id: c_username,
             poster_user_id: "Devin"
         };
+
+        // $.get("/api/blogpage_poster", function(data, status){
+
+        // })
         
         $.ajax({
             type: "POST",

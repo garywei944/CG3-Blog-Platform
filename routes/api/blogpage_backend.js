@@ -20,13 +20,13 @@ router
         
         console.log(this_user_id + " followed user " + poster_user_id)
     })
-    .get('/blogpage_poster', async (req, res) => {
-        // const post_id = req.params.post_id;
-        // const result = await db.query("select username from post where post_id = $1", [post_id]);
-        // const results = (result) ? result.rows : null;
+    // .get('/blogpage_poster', async (req, res) => {
+    //     const post_id = req.params.post_id;
+    //     const result = await db.query("select username from post where post_id = $1", [post_id]);
+    //     const results = (result) ? result.rows : null;
 
-        // res.json(results)
-    });
+    //     res.json(results)
+    // });
 
 
 

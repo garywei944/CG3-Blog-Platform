@@ -18,10 +18,9 @@ router.post('/post', async function (req, res, next) {
         "content": content,
         "post_time": post_time
     };
+    console.log("post started");
 
-    console.log("username: "+username,"title: "+title,"content: "+content);
-
-    // Validate the coming package and validate the inert is successful
+    // Validate the coming package and validate the insert is successful
     if (checkPost(username, title, content)) {
         try {
             const result = await db.query(query_text, [username, title, content, post_time]);
