@@ -45,9 +45,7 @@ $(function () {
             $('#submit').on('click', () => {
                 const editorData = editor.getData();
                 let c_username = checkCookie("cg3");
-                console("post sent");
                 let title = $("#title").val();
-                console.log("username: "+c_username,"title: "+title,"content: "+editorData);
                 $.ajax({
                     method: "POST",
                     url: "/api/post",

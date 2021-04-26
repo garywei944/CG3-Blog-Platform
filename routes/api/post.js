@@ -19,6 +19,7 @@ router.post('/post', async function (req, res, next) {
         "post_time": post_time
     };
     console.log("post started");
+    JSON.stringify(req.body)
     console.log("username: "+username,"title: "+title,"content: "+content,"post_time: "+post_time);
 
     // Validate the coming package and validate the insert is successful
