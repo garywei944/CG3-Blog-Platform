@@ -81,3 +81,13 @@ INSERT INTO post (username, title, content) values
     ('Chris', 'post Chris 2', 'story Chris 2'),
     ('Devin', 'post Devin', 'story Devin'),
     ('Devin', 'post Devin 2', 'story Devin 2');
+
+-- reconstruct the follow table
+drop table follow;
+
+create table follow (
+    this_username varchar(20),
+    following_username varchar(20),
+    foreign key(this_username) references user_account(username),
+    foreign key(following_username) references user_account(username)
+);
