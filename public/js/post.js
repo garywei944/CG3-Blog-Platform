@@ -44,23 +44,25 @@ $(function () {
 
             $('#submit').on('click', () => {
                 const editorData = editor.getData();
-                c_username = checkCookie("cg3");
+                let c_username = checkCookie("cg3");
+                let title = $("#title").val();
                 console.log("username: "+c_username,"title: "+title,"content: "+editorData);
                 $.ajax({
                     method: "POST",
                     url: "/api/post",
-                    data:{"username":c_username,"title":title,"content":editor},
+                    data:JSON.stringify({"username":c_username,"title":title,"content":editorData}),
+                    contentType: "application/json"
                 }).done(function(data) {
                     if(data){
-                        alert("You have posted successfully");
-                        window.location.href = '/post'+data.post_info.post_id;
+                        alert("You have posted successfully"+data);
+                        console.log("data: "+JSON.stringify(data));
+                        window.location.href = '/post/'+data;
                     }else{
                         alert("Post failed. Please try again later.");
                     }
                 }).fail(function(jqXHR) {
                     alert("Post failed. Please try again later.");
                 });
-                console.log(editorData);
             });
         })
         .catch(error => {
