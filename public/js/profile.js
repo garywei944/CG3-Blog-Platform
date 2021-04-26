@@ -45,9 +45,20 @@ $(function (events, handler) {
         $edit_btn.html("Follow");
         $edit_modal.remove();
 
-        // TODO: follow funcitons
+        $edit_btn.on('click', function (e) {
+            const data = {
+                this_user_id: user_cookie,
+                poster_user_id: username
+            };
+
+            $.post('/api/blogpage_backened_follow', data, function (data) {
+                alert('You are now following ' + username + '.');
+                loadFollower();
+            }).fail(function (jqXHR) {
+                console.error(jqXHR);
+            });
+        })
     } else {
-        const $edit_form = $("#edit_form");
         const $edit_username = $("#edit_username");
         const $edit_bio = $("#edit_bio");
         const $edit_save = $("#edit_save");
@@ -80,19 +91,8 @@ $(function (events, handler) {
     }
 
     loadPosts();
+    loadFollower();
 
-    // Render Follower and Following dropdown list
-    $.get('/api/' + username + '/follower', function (data) {
-        let $follower_dropdown = $("#follower_dropdown");
-        if (data.length === 0) {
-            $follower_dropdown.append('<a class="dropdown-item">You don\'t have any followers</a>');
-            return;
-        }
-
-        $follower_dropdown.empty().html(follower_render({
-            users: data
-        }));
-    });
 
     $.get('/api/' + username + '/following', function (data) {
         let $following_dropdown = $("#following_dropdown");
@@ -139,6 +139,23 @@ function loadPosts() {
         if (data.length === 0) return;
         $posts.html(post_render({
             posts: data
+        }));
+    });
+}
+
+// Render Follower and Following dropdown list
+function loadFollower() {
+    let $follower_dropdown = $("#follower_dropdown");
+    $follower_dropdown.empty();
+
+    $.get('/api/' + username + '/follower', function (data) {
+        if (data.length === 0) {
+            $follower_dropdown.append('<a class="dropdown-item">You don\'t have any followers</a>');
+            return;
+        }
+
+        $follower_dropdown.html(follower_render({
+            users: data
         }));
     });
 }
