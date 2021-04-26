@@ -8,11 +8,14 @@ const router = new Router();
 
 router
     //Page rendering
+    .get('/', function (req, res) {
+        res.render('pages/index', {});
+    })
     .get('/login', function (req, res) {
-        res.sendFile(appRoot + '/public/loginpage.html');
+        res.render('pages/loginpage', {});
     })
     .get('/signup', function (req, res) {
-        res.sendFile(appRoot + '/public/signup.html');
+        res.render('pages/signup', {});
     })
     .get('/post', function (req, res) {
         res.render('pages/post', {});
