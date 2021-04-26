@@ -1,26 +1,14 @@
-body{
-    margin: 0;
-    padding: 0;
+.main {
+    background-color: rgba(255, 255, 255, 0.8);
 }
 
-
-#bottomLeft{
-    /* background-color: gray; */
-    background-color: rgb(150, 185, 238);
-    border: 1px solid black;
-    box-sizing: border-box;
-    width: 80%;
-    height: 90vh;
-    float: left;
-}
-
-#bottomRight{
-    background-color: lightgreen;
-    border: 1px solid black;
-    box-sizing: border-box;
-    width: 20%;
-    height: 90vh;
-    float: right;
+.card-text {
+    display: block;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    overflow: hidden;
+    max-height: 5.4em;
+    line-height: 1.8em;
 }
 
 .right{

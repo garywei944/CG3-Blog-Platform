@@ -1,12 +1,26 @@
-$(document).ready(function () {
-    $.get('/api/homepage', function(data){
-        data.forEach(function(item){
-            let post = "<tr><td class='list' id='"+ item.post_id + "'><a>" + item.title + "</a></td></tr>";
-            $('#posts').append(post);
-        })
-    }, 'json').done(function(){
-            $(".list").click(function () {
-            window.location.href = '/post/' + $(this).attr('id');
-        });
+let post_card_str = `
+    <% posts.forEach(function(post) { %>
+        <div class="card mt-4 posts">
+            <div class="card-body btn btn-outline-dark">
+                <h5 class="card-title"><%= post.title %></h5>
+                <p class="card-text"><%- post.content %></p>
+                <p class="card-text"><%- new Date(post.post_time).toUTCString().slice(0,16) %></p>
+                <a href="/post/<%= post.post_id %>" class="stretched-link"></a>
+            </div>
+        </div>
+    <% }); %>
+`;
+
+let post_render = ejs.compile(post_card_str, {});
+
+$(document).ready(function (){
+    let $posts = $("#posts");
+    $posts.empty();
+
+    $.get('/api/homepage', function (data) {
+        if (data.length === 0) return;
+        $posts.html(post_render({
+            posts: data
+        }));
     });
-});
+})
