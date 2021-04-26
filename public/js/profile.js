@@ -13,13 +13,13 @@ const post_card_str = `
 
 const follower_item_str = `
     <% users.forEach(function(user) { %>
-        <a href="/<%= user.follower_name %>" class="dropdown-item"><%= user.follower_name %></a>
+        <a href="/<%= user.following_username %>" class="dropdown-item"><%= user.this_username %></a>
     <% }); %>
 `;
 
 const following_item_str = `
     <% users.forEach(function(user) { %>
-        <a href="/<%= user.username %>" class="dropdown-item"><%= user.username %></a>
+        <a href="/<%= user.following_username %>" class="dropdown-item"><%= user.this_username %></a>
     <% }); %>
 `;
 

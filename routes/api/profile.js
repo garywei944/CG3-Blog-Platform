@@ -20,7 +20,7 @@ router
         try {
             const username = req.params.username;
 
-            const result = await db.query("select * from follow where username = $1", [username]);
+            const result = await db.query("select * from follow where following_username = $1", [username]);
             const results = (result) ? result.rows : null;
 
             res.json(results)
@@ -33,7 +33,7 @@ router
         try {
             const username = req.params.username;
 
-            const result = await db.query("select * from follow where follower_name = $1", [username]);
+            const result = await db.query("select * from follow where this_username = $1", [username]);
             const results = (result) ? result.rows : null;
 
             res.json(results)
