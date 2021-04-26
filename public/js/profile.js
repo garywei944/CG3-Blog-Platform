@@ -1,4 +1,4 @@
-let post_card_str = `
+const post_card_str = `
     <% posts.reverse().forEach(function(post) { %>
         <div class="card mt-4 posts">
             <div class="card-body btn btn-outline-dark">
@@ -11,17 +11,17 @@ let post_card_str = `
     <% }); %>
 `;
 
-let follower_item_str = `
+const follower_item_str = `
     <% users.forEach(function(user) { %>
         <a href="/<%= user.follower_name %>" class="dropdown-item"><%= user.follower_name %></a>
     <% }); %>
 `;
-let following_item_str = `
+const following_item_str = `
     <% users.forEach(function(user) { %>
         <a href="/<%= user.username %>" class="dropdown-item"><%= user.username %></a>
     <% }); %>
 `;
-let liked_item_str = `
+const liked_item_str = `
     <% posts.forEach(function(post) { %>
         <a href="/post/<%= post.post_id %>" class="dropdown-item"><%= post.title %></a>
     <% }); %>
