@@ -50,8 +50,12 @@ $(function () {
 
     // Render Follower and Following dropdown list
     $.get('/api/' + username + '/follower', function (data) {
-        if (data.length === 0) return;
-        $("#follower_dropdown").empty().html(follower_render({
+        let $follower_dropdown = $("#follower_dropdown");
+        if (data.length === 0) {
+            $follower_dropdown.remove();
+            return;
+        }
+        $follower_dropdown.empty().html(follower_render({
             users: data
         }));
     }, 'json').done(function () {
@@ -59,8 +63,12 @@ $(function () {
     });
 
     $.get('/api/' + username + '/following', function (data) {
-        if (data.length === 0) return;
-        $("#following_dropdown").empty().html(following_render({
+        let $following_dropdown = $("#following_dropdown");
+        if (data.length === 0) {
+            $following_dropdown.remove();
+            return;
+        }
+        $following_dropdown.empty().html(following_render({
             users: data
         }));
     }, 'json').done(function () {
