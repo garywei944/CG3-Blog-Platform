@@ -1,5 +1,6 @@
 $(function () {
     let $editor = $("#editor");
+    let user_cookie = Cookies.get("cg3");
 
     ClassicEditor
         .create($editor[0], {
@@ -20,26 +21,26 @@ $(function () {
 
             $('#submit').on('click', () => {
                 const editorData = editor.getData();
-                let c_username = checkCookie("cg3");
                 let title = $("#title").val();
-                $.ajax({
-                    method: "POST",
-                    url: "/api/post",
-                    data: JSON.stringify({"username": c_username, "title": title, "content": editorData}),
-                    contentType: "application/json"
-                }).done(function (data) {
-                    if (data) {
-                        alert("You have posted successfully");
-                        window.location.href = '/post/' + data;
-                    } else {
-                        alert("Post failed. Please try again later.");
-                    }
+
+                $.post('/api/post', {
+                    username: user_cookie,
+                    title: title,
+                    content: editorData
+                }, function (data) {
+                    alert("You have posted successfully");
+                    $(location).attr('href', '/post/' + data)
                 }).fail(function (jqXHR) {
                     alert("Post failed. Please try again later.");
+                    console.error(jqXHR);
                 });
             });
         })
-        .catch(error => {
-            console.error(error);
+        .catch(err => {
+            console.error(err);
         });
+
+    $('#post_form').on('submit', function (e) {
+        e.preventDefault();
+    });
 })
