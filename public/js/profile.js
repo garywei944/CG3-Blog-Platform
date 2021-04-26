@@ -38,14 +38,22 @@ let username = $(location).attr('pathname').match(/.*\/(.*)/)[1];
 
 $(function (events, handler) {
     // Remove Edit button if the username doesn't match
+    const $logout_btn = $("#logout_btn");
     const $edit_btn = $("#edit_btn");
     const $edit_modal = $("#edit_modal");
 
     if (username !== user_cookie) {
         $edit_btn.html("Follow");
+        $edit_btn.removeClass('ml-lg-5').addClass('offset-lg-9');
+        $logout_btn.remove();
         $edit_modal.remove();
 
+
         $edit_btn.on('click', function (e) {
+            if (!user_cookie) {
+                $(location).attr('href', '/login');
+            }
+
             const data = {
                 this_user_id: user_cookie,
                 poster_user_id: username
@@ -88,6 +96,11 @@ $(function (events, handler) {
                 console.error(jqXHR);
             });
         });
+
+        $logout_btn.on('click', function (e) {
+            Cookies.remove('cg3');
+            $(location).attr('href', '/');
+        })
     }
 
     loadPosts();

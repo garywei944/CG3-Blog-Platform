@@ -8,6 +8,12 @@
     font-size: 1.2em;
 }
 
+.logout-button {
+    background-color: #e56666;
+    color: black;
+    font-size: 1.2em;
+}
+
 .card-text {
     display: block;
     text-overflow: ellipsis;
@@ -24,6 +30,11 @@
 #bio {
     overflow-y: auto;
     height: 12em;
+}
+
+#logout_btn {
+    /*background-color: lightcoral;*/
+    /*background-color: #f83232;*/
 }
 
 #blog_btn, #favorite_btn {
