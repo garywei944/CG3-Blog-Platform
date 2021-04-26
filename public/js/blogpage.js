@@ -1,29 +1,33 @@
-
 $(document).ready(function() {
-    
+
+    let post_id = String(window.location.href).split("/").pop();
+    console.log(post_id)
+
+    // let c_username = checkCookie("cg3");
+    let c_username = Cookies.get("cg3");
+    console.log(c_username)
     // click on "like" - add 'this' user and 'this blog' to the database table 'liked'
     $('#like').click(function(){                
 
         console.log("like button clicked")
 
         const input = {
-            user_id: "this_user",
-            post_id: "this_post"
+            user_id: c_username,
+            post_id: post_id
         };
     
         console.log(input);
     
         $.ajax({
             type: "POST",
-            url: "/api/blogpage_backend/",
-            data:JSON.stringify(input),
-            contentType: "application/json"
+            url: "/api/blogpage_backened_like",
+            data: input,
         })
         .done(function(data) {
-            // Successfully deleted entree
+            console.log(user_id + " liked post " + post_id)
         })
         .fail(function(jqXHR) {
-            alert("error");
+            console.log("failed to post like");
         });
     });
 
@@ -32,23 +36,24 @@ $(document).ready(function() {
         console.log("follow button clicked")
 
         const input = {
-            this_user_id: "this_user",
-            poster_user_id: "poster_user"
+            this_user_id: c_username,
+            poster_user_id: "Devin"
         };
-    
-        console.log(input);
-    
+
+        // $.get("/api/blogpage_poster", function(data, status){
+
+        // })
+        
         $.ajax({
             type: "POST",
-            url: "/api/blogpage_backend/",
-            data:JSON.stringify(input),
-            contentType: "application/json"
+            url: "/api/blogpage_backened_follow",
+            data: input,
         })
         .done(function(data) {
-            // Successfully deleted entree
+            console.log(this_user_id + " followed user " + poster_user_id)
         })
         .fail(function(jqXHR) {
-            alert("error");
+            console.log("failed to post follow");
         });
     });
 

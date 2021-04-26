@@ -6,20 +6,7 @@ $(document).ready(function () {
         })
     }, 'json').done(function(){
             $(".list").click(function () {
-            window.location.href = '/db/post/' + $(this).attr('id');
+            window.location.href = '/post/' + $(this).attr('id');
         });
     });
-
-    $("#newpost").click(function () {
-        window.location.href = '/post';
-    });
-
-    $("#home").click(function () {
-        window.location.href = '/';
-    });
-
-    $(".wl").click(function () {
-        window.location.href = 'blogpage.html'; // handle this - distribute to customized url depending on the post id/title
-    });
-
 });

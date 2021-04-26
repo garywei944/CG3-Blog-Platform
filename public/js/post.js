@@ -1,3 +1,27 @@
+function getCookie(c_name){
+    if (document.cookie.length>0){
+        var c_start=document.cookie.indexOf(c_name + "=");
+        if (c_start!=-1){
+            c_start=c_start + c_name.length+1;
+            var c_end=document.cookie.indexOf(";",c_start);
+            if (c_end==-1){ 
+                c_end=document.cookie.length;
+            }
+            return unescape(document.cookie.substring(c_start,c_end));
+        }
+    }
+    return "";
+}
+
+function checkCookie(c_name){
+    var cookie=getCookie(c_name);
+    if (cookie!=null && cookie!=""){
+        return cookie;
+    }else{
+        return false; 
+    }
+}
+
 $(function () {
     let $editor = $("#editor");
 
@@ -20,9 +44,23 @@ $(function () {
 
             $('#submit').on('click', () => {
                 const editorData = editor.getData();
-
-                // TODO: send the POST package to /api/post
-                console.log(editorData);
+                let c_username = checkCookie("cg3");
+                let title = $("#title").val();
+                $.ajax({
+                    method: "POST",
+                    url: "/api/post",
+                    data:JSON.stringify({"username":c_username,"title":title,"content":editorData}),
+                    contentType: "application/json"
+                }).done(function(data) {
+                    if(data){
+                        alert("You have posted successfully");
+                        window.location.href = '/post/'+data;
+                    }else{
+                        alert("Post failed. Please try again later.");
+                    }
+                }).fail(function(jqXHR) {
+                    alert("Post failed. Please try again later.");
+                });
             });
         })
         .catch(error => {

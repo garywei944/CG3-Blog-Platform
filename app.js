@@ -10,6 +10,7 @@ const app = express();
 app
     .use(express.static(path.join(__dirname, 'public')))
     .use(express.urlencoded({extended: true}))
+    .use(express.json( { extended: false } ))
     .set('views', path.join(__dirname, 'views'))
     .set('view engine', 'ejs')
 

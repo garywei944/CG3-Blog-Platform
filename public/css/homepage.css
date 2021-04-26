@@ -5,7 +5,8 @@ body{
 
 
 #bottomLeft{
-    background-color: gray;
+    /* background-color: gray; */
+    background-color: rgb(150, 185, 238);
     border: 1px solid black;
     box-sizing: border-box;
     width: 80%;
@@ -33,32 +34,20 @@ body{
     font-size: 40px;
 }
 
-#newpost{
-    float: right;
-    width: 50px;
-    margin-right: 50px;
-    margin-top: 10px;
-    font-size: 16px;
-}
-
-#circle{
-    color: gray;
-    border-radius: 50%;
-    margin-top: 10px;
-    height: 40px;
-    width: 40px;
-}
-
 .list{
     font-size: 24px;
+    cursor: pointer;
     text-align: center;
     margin: auto;
-    width: 45vw;
-    height: 12vh;
-    border: 3px solid black;
+    width: 40vw;
+    height: 10vh;
+    border: 3px solid white;
     padding: 10px;
 }
 
+.list:hover {
+    color: blue;
+}
 
 .wl{
     font-size: 20px;
