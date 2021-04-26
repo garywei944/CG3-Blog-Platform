@@ -25,8 +25,11 @@ $(function () {
         $(".posts").on('click', function () {
             window.location.href = '/post/' + $(this).attr('id');
         });
-    })
+    });
 
     // Remove Edit button if the username doesn't match
-    // if(username!=)
+    if (username !== $("#username>p").text()) {
+        console.log("Success");
+        $("#edit_btn").remove();
+    }
 })

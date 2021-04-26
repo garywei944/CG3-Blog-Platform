@@ -1,42 +1,15 @@
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+
 <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
     <a class="navbar-brand" href="/">CG3</a>
 
     <!--    TODO: link to the api of profile and change profile picture -->
-    <a href="" class="navbar-nav ml-auto" id = "avatar">
-        <img src="/images/akari.jpg" alt="Profile Picture" width="40" height="40" class="rounded-circle">
+    <a href="" class="navbar-nav ml-auto" id="avatar">
+        <img src="images/akari.jpg" alt="Profile Picture" width="40" height="40" class="rounded-circle">
     </a>
     <script>
-        function getCookie(c_name){
-            if (document.cookie.length>0){
-                let c_start=document.cookie.indexOf(c_name + "=");
-                if (c_start!=-1){
-                    c_start=c_start + c_name.length+1;
-                    let c_end=document.cookie.indexOf(";",c_start);
-                    if (c_end==-1){ 
-                        c_end=document.cookie.length;
-                    }
-                    return unescape(document.cookie.substring(c_start, c_end));
-                }
-            }
-            return "";
-        }
-
-        function checkCookie(c_name){
-            let cookie=getCookie(c_name);
-            if (cookie!=null && cookie!=""){
-                return cookie;
-            }else{
-                return false;
-            }
-        }
-        
-        let c_username = checkCookie("cg3");
-        console.log(c_username);
-        if(!c_username){
-            $("#avatar").attr("href","/login");
-        }else{
-            $("#avatar").attr("href","/"+c_username);
-        }
+        let user_cookie = Cookies.get('cg3');
+        $("#avatar").attr("href", "/" + user_cookie ? user_cookie : 'login');
     </script>
     <a href="/post" class="navbar-link btn btn-outline-light ml-2">New Post</a>
 </nav>
