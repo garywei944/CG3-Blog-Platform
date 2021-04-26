@@ -7,23 +7,22 @@ $(document).ready(function() {
         console.log("like button clicked")
 
         const input = {
-            user_id: "this_user",
-            post_id: "this_post"
+            user_id: "Alex",
+            post_id: 1
         };
     
         console.log(input);
     
         $.ajax({
             type: "POST",
-            url: "/api/blogpage_backend/",
-            data:JSON.stringify(input),
-            contentType: "application/json"
+            url: "/api/blogpage_backened_like",
+            data: input,
         })
         .done(function(data) {
-            // Successfully deleted entree
+            console.log(user_id + " liked post " + post_id)
         })
         .fail(function(jqXHR) {
-            alert("error");
+            console.log("failed to post like");
         });
     });
 
@@ -32,23 +31,20 @@ $(document).ready(function() {
         console.log("follow button clicked")
 
         const input = {
-            this_user_id: "this_user",
-            poster_user_id: "poster_user"
+            this_user_id: "Chris",
+            poster_user_id: "Devin"
         };
-    
-        console.log(input);
-    
+        
         $.ajax({
             type: "POST",
-            url: "/api/blogpage_backend/",
-            data:JSON.stringify(input),
-            contentType: "application/json"
+            url: "/api/blogpage_backened_follow",
+            data: input,
         })
         .done(function(data) {
-            // Successfully deleted entree
+            console.log(this_user_id + " followed user " + poster_user_id)
         })
         .fail(function(jqXHR) {
-            alert("error");
+            console.log("failed to post follow");
         });
     });
 
