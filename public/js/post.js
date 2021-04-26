@@ -45,6 +45,7 @@ $(function () {
             $('#submit').on('click', () => {
                 const editorData = editor.getData();
                 let c_username = checkCookie("cg3");
+                console("post sent");
                 let title = $("#title").val();
                 console.log("username: "+c_username,"title: "+title,"content: "+editorData);
                 $.ajax({
@@ -54,8 +55,7 @@ $(function () {
                     contentType: "application/json"
                 }).done(function(data) {
                     if(data){
-                        alert("You have posted successfully"+data);
-                        console.log("data: "+JSON.stringify(data));
+                        alert("You have posted successfully");
                         window.location.href = '/post/'+data;
                     }else{
                         alert("Post failed. Please try again later.");

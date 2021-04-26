@@ -9,7 +9,11 @@
     </a>
     <script>
         let user_cookie = Cookies.get('cg3');
-        $("#avatar").attr("href", "/" + user_cookie ? user_cookie : 'login');
+        $("#avatar").attr("href", ($(location).attr('origin')+ "/") + (user_cookie ? user_cookie : "login"));
     </script>
-    <a href="/post" class="navbar-link btn btn-outline-light ml-2">New Post</a>
+    <a href="" class="navbar-link btn btn-outline-light ml-2" id="postbtn">New Post</a>
+    <script>
+        user_cookie = Cookies.get('cg3');
+        $("#postbtn").attr("href", ($(location).attr('origin')+ "/") + (user_cookie ? "post" : "login"));
+    </script>
 </nav>
