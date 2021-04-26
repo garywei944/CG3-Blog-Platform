@@ -10,15 +10,23 @@
 <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
 
 <nav class="navbar fixed-top navbar-expand-sm bg-primary navbar-dark">
-    <a class="navbar-brand" href="/">CG3</a>
+    <div class="container">
+        <a class="navbar-brand p-0" href="/">
+            <img src="/images/cg3_icon_trans_256.png" alt="CG3 Logo" width="40" height="40">
+        </a>
+        <a class="navbar-brand" href="/">CG3 Blog Platform</a>
 
-    <a href="" class="navbar-nav ml-auto" id="avatar">
-        <img src="/images/akari.jpg" alt="Profile Picture" width="40" height="40" class="rounded-circle">
-    </a>
-    <a href="" class="navbar-link btn btn-outline-light ml-2" id="post_btn">New Post</a>
-    <script>
-        let user_cookie = Cookies.get('cg3');
-        $("#avatar").prop("href", ($(location).attr('origin') + "/") + (user_cookie ? user_cookie : "login"));
-        $("#post_btn").prop("href", ($(location).attr('origin') + "/") + (user_cookie ? "post" : "login"));
-    </script>
+        <a href="" class="navbar-nav ml-auto" id="avatar">
+            <img src="/images/akari.jpg" alt="Profile Picture" width="40" height="40" class="rounded-circle">
+        </a>
+        <a href="" class="navbar-link btn btn-outline-light ml-2" id="post_btn">New Post</a>
+        <script>
+            let user_cookie = Cookies.get('cg3');
+            const $post_btn = $("#post_btn");
+
+            $("#avatar").prop("href", ($(location).attr('origin') + "/") + (user_cookie ? user_cookie : "login"));
+            $post_btn.text(user_cookie ? 'New Post' : 'Login');
+            $post_btn.prop("href", ($(location).attr('origin') + "/") + (user_cookie ? "post" : "login"));
+        </script>
+    </div>
 </nav>
