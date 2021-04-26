@@ -9,6 +9,7 @@ body{
     border-radius: 1vh;
     margin: 5vh;
     background-color: rgb(183, 196, 209);
+    opacity: 0.8;
 }
 
 #blogtext {
