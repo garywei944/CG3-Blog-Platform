@@ -28,7 +28,10 @@ $(function () {
     });
 
     // Remove Edit button if the username doesn't match
+    let $edit_btn = $("#edit_btn");
     if (username !== user_cookie) {
-        $("#edit_btn").remove();
+        $edit_btn.html("Follow");
+    } else {
+        // TODO:
     }
 })
