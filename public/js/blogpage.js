@@ -1,14 +1,19 @@
-
 $(document).ready(function() {
-    
+
+    let post_id = String(window.location.href).split("/").pop();
+    console.log(post_id)
+
+    // let c_username = checkCookie("cg3");
+    let c_username = Cookies.get("cg3");
+    console.log(c_username)
     // click on "like" - add 'this' user and 'this blog' to the database table 'liked'
     $('#like').click(function(){                
 
         console.log("like button clicked")
 
         const input = {
-            user_id: "Alex",
-            post_id: 1
+            user_id: c_username,
+            post_id: post_id
         };
     
         console.log(input);
@@ -31,7 +36,7 @@ $(document).ready(function() {
         console.log("follow button clicked")
 
         const input = {
-            this_user_id: "Chris",
+            this_user_id: c_username,
             poster_user_id: "Devin"
         };
         
