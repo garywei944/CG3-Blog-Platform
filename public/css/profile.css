@@ -22,10 +22,10 @@
     height: 12em;
 }
 
-#post_nav > div:nth-of-type(odd) {
+#post_nav > button:nth-of-type(odd) {
     background-color: #f6a4ec;
 }
 
-#post_nav > div:nth-of-type(even) {
+#post_nav > button:nth-of-type(even) {
     background-color: #97fbd1;
 }
