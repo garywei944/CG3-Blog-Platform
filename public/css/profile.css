@@ -4,6 +4,15 @@
     font-size: 1.2em;
 }
 
+.card-text {
+    display: block;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    overflow: hidden;
+    max-height: 5.4em;
+    line-height: 1.8em;
+}
+
 #username {
     font-size: 2em;
 }

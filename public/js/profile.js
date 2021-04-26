@@ -28,8 +28,7 @@ $(function () {
     });
 
     // Remove Edit button if the username doesn't match
-    if (username !== $("#username>p").text()) {
-        console.log("Success");
+    if (username !== user_cookie) {
         $("#edit_btn").remove();
     }
 })
