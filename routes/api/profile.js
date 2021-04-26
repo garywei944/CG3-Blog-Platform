@@ -73,5 +73,30 @@ router
             res.send("Error " + err);
         }
     })
+    .post('/:username/edit', async function (req, res, next) {
+        const username = req.params.username;
+        const bio = req.body.bio;
+
+        // Validate the coming package and validate the insert is successful
+        if (bio.length > 0) {
+            try {
+                const result = await db.query("update user_account set bio = $2 where username = $1", [username, bio]);
+
+                res.sendStatus(201);
+            } catch (err) {
+                console.error(err);
+                res.status(404);
+                res.send(err);
+            }
+        } else {
+            const err_msg = 'Error: POST /post: invalid input.\n' + JSON.stringify({
+                bio: bio
+            });
+            console.error(err_msg);
+            res.status(400);
+            res.send(err_msg);
+        }
+
+    })
 
 module.exports = router;

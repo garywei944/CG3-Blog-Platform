@@ -16,31 +16,64 @@ const follower_item_str = `
         <a href="/<%= user.follower_name %>" class="dropdown-item"><%= user.follower_name %></a>
     <% }); %>
 `;
+
 const following_item_str = `
     <% users.forEach(function(user) { %>
         <a href="/<%= user.username %>" class="dropdown-item"><%= user.username %></a>
     <% }); %>
 `;
+
 const liked_item_str = `
     <% posts.forEach(function(post) { %>
         <a href="/post/<%= post.post_id %>" class="dropdown-item"><%= post.title %></a>
     <% }); %>
 `;
 
-let post_render = ejs.compile(post_card_str, {});
-let follower_render = ejs.compile(follower_item_str, {});
-let following_render = ejs.compile(following_item_str, {});
-let liked_render = ejs.compile(liked_item_str, {});
+const post_render = ejs.compile(post_card_str, {});
+const follower_render = ejs.compile(follower_item_str, {});
+const following_render = ejs.compile(following_item_str, {});
+const liked_render = ejs.compile(liked_item_str, {});
 
 let username = $(location).attr('pathname').match(/.*\/(.*)/)[1];
 
 $(function (events, handler) {
     // Remove Edit button if the username doesn't match
-    let $edit_btn = $("#edit_btn");
+    const $edit_btn = $("#edit_btn");
+    const $edit_modal = $("#edit_modal");
+
     if (username !== user_cookie) {
         $edit_btn.html("Follow");
+        $edit_modal.remove();
+
+        // TODO: follow funcitons
     } else {
-        // TODO:
+        const $edit_form = $("#edit_form");
+        const $edit_username = $("#edit_username");
+        const $edit_bio = $("#edit_bio");
+        const $edit_save = $("#edit_save");
+
+        const $bio = $("#bio > p")
+        const bio = $bio.text();
+
+        $edit_username.prop('placeholder', "Coming soon...");
+        $edit_bio.prop('placeholder', bio);
+
+        $edit_save.on('click', function (e) {
+            let edited_bio = $edit_bio.val();
+
+            // if (edited_username.length === 0 && edited_bio.length === 0) {
+            if (edited_bio.length === 0) {
+                alert('Nothing to change.');
+                return;
+            }
+
+            $.post('/api/' + username + "/edit", {bio: edited_bio}, function (data) {
+                $bio.text(edited_bio);
+                $("#edit_modal").modal('hide');
+            }).fail(function (jqXHR) {
+                console.error(jqXHR);
+            });
+        });
     }
 
     loadPosts();
@@ -87,13 +120,14 @@ $(function (events, handler) {
     });
 
     $("#favorite_btn").on('click', function (e) {
-        alert("Feature developing...")
+        alert("Coming soon...")
     });
     $("#recent_btn").on('click', function (e) {
-        alert("Feature developing...")
+        alert("Coming soon...")
     });
-})
+});
 
+// Load all posts from database
 function loadPosts() {
     let $posts = $("#posts");
     $posts.empty();
