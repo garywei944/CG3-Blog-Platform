@@ -14,7 +14,7 @@ let post_render = ejs.compile(post_card_str, {});
 
 
 $(function () {
-    let username = $("#username>p").html();
+    let username = $(location).attr('pathname').match(/.*\/(.*)/)[1];
 
     $.get('/api/' + username + '/posts', function (data) {
         let html = post_render({
@@ -26,4 +26,7 @@ $(function () {
             window.location.href = '/post/' + $(this).attr('id');
         });
     })
+
+    // Remove Edit button if the username doesn't match
+    // if(username!=)
 })
