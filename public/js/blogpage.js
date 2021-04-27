@@ -15,7 +15,7 @@ $(document).ready(function() {
             post_id: post_id
         };
     
-        alert(c_username + " liked post " + post_id)
+        alert("liked post!")
     
         $.ajax({
             type: "POST",
@@ -38,7 +38,7 @@ $(document).ready(function() {
             // we send post_id to backend and let it query for the poster_user
         };
         
-        alert(c_username + " followed user ")
+        alert("followed!")
         
         $.ajax({
             type: "POST",
