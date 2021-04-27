@@ -23,10 +23,10 @@ router
     //Retrieving Blog Content from database and show it in the blogpage html
     .get('/post/:post_id', async (req, res) => {
         try {
-            const cond = "SELECT content FROM post WHERE post_id='" + req.params.post_id + "';";
+            const cond = "SELECT * FROM post WHERE post_id=" + req.params.post_id;
             const result = await db.query(cond);
             const results = (result) ? result.rows : null;
-            console.log(results);
+            // console.log(results);
             res.render("pages/blogpage", results[0]);
         } catch (err) {
             console.error(err);

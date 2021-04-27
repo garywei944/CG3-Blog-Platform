@@ -18,19 +18,16 @@ router.post('/post', async function (req, res, next) {
         "content": content,
         "post_time": post_time
     };
-    console.log("post started");
-    JSON.stringify(req.body)
-    console.log("username: "+username,"title: "+title,"content: "+content,"post_time: "+post_time);
 
     // Validate the coming package and validate the insert is successful
     if (checkPost(username, title, content)) {
         try {
             const result = await db.query(query_text, [username, title, content, post_time]);
-            const result2 = await db.query("SELECT * FROM post WHERE username = $1 AND post_time = $2", [username,post_time]);
-            let post_id = result2.rows[0].post_id;
-            console.log("post_id: "+post_id);
+            const post_result = await db.query("SELECT * FROM post WHERE username = $1 AND post_time = $2", [username, post_time]);
+            let post_id = post_result.rows[0].post_id;
+
             res.status(201);
-            res.json(post_id);
+            res.send({post_id: post_id});
         } catch (err) {
             console.error(err);
             res.status(400);

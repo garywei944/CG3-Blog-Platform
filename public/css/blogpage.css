@@ -1,7 +1,15 @@
-body{
+body {
     margin: 0;
     padding: 0;
     background-color: rgb(150, 185, 238);
+}
+
+.card {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.card-body {
+    min-height: 75vh;
 }
 
 #blogContent {
@@ -9,6 +17,7 @@ body{
     border-radius: 1vh;
     margin: 5vh;
     background-color: rgb(183, 196, 209);
+    opacity: 0.8;
 }
 
 #blogtext {
@@ -17,10 +26,10 @@ body{
 
 .button-group button {
     background-color: #4CAF50; /* Green background */
-    border: none; 
-    color: white; 
-    padding: 20px 48px; 
-    cursor: pointer; 
+    border: none;
+    color: white;
+    padding: 20px 48px;
+    cursor: pointer;
 }
 
 .button-group button:hover {

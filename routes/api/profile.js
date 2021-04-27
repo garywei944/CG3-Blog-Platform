@@ -20,7 +20,7 @@ router
         try {
             const username = req.params.username;
 
-            const result = await db.query("select * from follow where username = $1", [username]);
+            const result = await db.query("select * from follow where following_username = $1", [username]);
             const results = (result) ? result.rows : null;
 
             res.json(results)
@@ -33,7 +33,7 @@ router
         try {
             const username = req.params.username;
 
-            const result = await db.query("select * from follow where follower_name = $1", [username]);
+            const result = await db.query("select * from follow where this_username = $1", [username]);
             const results = (result) ? result.rows : null;
 
             res.json(results)
@@ -97,6 +97,38 @@ router
             res.send(err_msg);
         }
 
+    })
+    .post('/:username/follow', async function (req, res) {
+        const this_username = req.params.username;
+        const following_username = req.body.following_username;
+
+        const data = {
+            this_username: this_username,
+            following_username: following_username
+        }
+
+        if (following_username.length > 0) {
+            try {
+                const result = await db.query("SELECT * from follow WHERE this_username = $1 AND following_username = $2;", [this_username, following_username]);
+                const results = (result) ? result.rows : null;
+
+                if (results && results.length === 0) {
+                    await db.query("INSERT INTO follow VALUES ($1, $2);", [this_username, following_username]);
+                }
+
+                res.sendStatus(201)
+            } catch (err) {
+                console.error(err);
+                res.status(404);
+                res.send(err);
+            }
+
+        } else {
+            const err_msg = 'Error: POST /post: invalid input.\n' + JSON.stringify(data);
+            console.error(err_msg);
+            res.status(400);
+            res.send(err_msg);
+        }
     })
 
 module.exports = router;

@@ -1,34 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!--    TODO: remember to add title here - Gary -->
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+    <title><%= title %></title>
+
+    <%- include(appRoot+'/views/partials/head') %>
+
     <link href="/css/blogpage.css" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
     <script src="/js/blogpage.js"></script>
 </head>
 
 <body>
-    <!-- navbar -->
-    <%- include(appRoot+'/views/partials/nav') %>
 
-    <div id="blogBody">
-        <div id="blogContent">
-            <a href="profile.html" class="navbar-nav ml-auto">
-                <img src="/images/akari.jpg" alt="Profile Picture" width="40" height="40" class="rounded-circle">
-            </a>
-            <div id="blogtext"><%= content %></div>
+<%- include(appRoot+'/views/partials/nav') %>
+
+
+<div class="container">
+    <div class="card mt-4">
+        <h3 class="card-header"><%= title %></h3>
+        <div class="card-body">
+            <p class="card-text"><%- content %></p>
+        </div>
+        <div class="btn-group" role="group" aria-label="Basic example">
+            <button id="like" type="button" class="btn btn-outline-primary">Like</button>
+            <button id="follow" type="button" class="btn btn-outline-primary">Follow</button>
+            <button id="readLater" type="button" class="btn btn-outline-primary">Read Later</button>
+        </div>
+        <div class="card-footer">
+            <div class="row">
+                <div class="col-6">
+                    <a href="/<%- username %>" class="text-muted text-decoration-none">
+                        <img src="/images/akari.jpg" alt="Profile Picture" width="40" height="40"
+                             class="rounded-circle">
+                        <%- username %>
+                    </a>
+                </div>
+                <div class="col-6 text-right">
+                    <%- new Date(post_time).toUTCString() %>
+                </div>
+            </div>
         </div>
     </div>
 
-    <div id="bottom">
-        <div class="button-group">
-            <button id="like" style="width:33%">Like</button>
-            <button id="follow" style="width:33%">Follow</button>
-            <button id="readLater" style="width:33%">Read Later</button>
-          </div>
-    </div>
+</div>
+
+
+<%- include(appRoot+'/views/partials/footer') %>
 
 </body>
 </html>

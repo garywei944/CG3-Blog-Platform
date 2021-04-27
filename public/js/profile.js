@@ -1,7 +1,7 @@
 const post_card_str = `
     <% posts.reverse().forEach(function(post) { %>
         <div class="card mt-4 posts">
-            <div class="card-body btn btn-outline-dark">
+            <div class="card-body btn btn-outline-dark text-left">
                 <h5 class="card-title"><%= post.title %></h5>
                 <p class="card-text"><%- post.content %></p>
                 <p class="card-text"><%- new Date(post.post_time).toUTCString() %></p>
@@ -13,13 +13,13 @@ const post_card_str = `
 
 const follower_item_str = `
     <% users.forEach(function(user) { %>
-        <a href="/<%= user.follower_name %>" class="dropdown-item"><%= user.follower_name %></a>
+        <a href="/<%= user.this_username %>" class="dropdown-item"><%= user.this_username %></a>
     <% }); %>
 `;
 
 const following_item_str = `
     <% users.forEach(function(user) { %>
-        <a href="/<%= user.username %>" class="dropdown-item"><%= user.username %></a>
+        <a href="/<%= user.following_username %>" class="dropdown-item"><%= user.following_username %></a>
     <% }); %>
 `;
 
@@ -38,20 +38,27 @@ let username = $(location).attr('pathname').match(/.*\/(.*)/)[1];
 
 $(function (events, handler) {
     // Remove Edit button if the username doesn't match
+    const $logout_btn = $("#logout_btn");
     const $edit_btn = $("#edit_btn");
     const $edit_modal = $("#edit_modal");
 
     if (username !== user_cookie) {
         $edit_btn.html("Follow");
+        $edit_btn.removeClass('ml-lg-5').addClass('offset-lg-9');
+        $logout_btn.remove();
         $edit_modal.remove();
 
+
         $edit_btn.on('click', function (e) {
+            if (!user_cookie) {
+                $(location).attr('href', '/login');
+            }
+
             const data = {
-                this_user_id: user_cookie,
-                poster_user_id: username
+                following_username: username
             };
 
-            $.post('/api/blogpage_backened_follow', data, function (data) {
+            $.post('/api/' + user_cookie + '/follow', data, function (data) {
                 alert('You are now following ' + username + '.');
                 loadFollower();
             }).fail(function (jqXHR) {
@@ -88,6 +95,11 @@ $(function (events, handler) {
                 console.error(jqXHR);
             });
         });
+
+        $logout_btn.on('click', function (e) {
+            Cookies.remove('cg3');
+            $(location).attr('href', '/');
+        })
     }
 
     loadPosts();
