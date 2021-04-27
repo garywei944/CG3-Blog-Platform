@@ -13,13 +13,13 @@ const post_card_str = `
 
 const follower_item_str = `
     <% users.forEach(function(user) { %>
-        <a href="/<%= user.following_username %>" class="dropdown-item"><%= user.this_username %></a>
+        <a href="/<%= user.this_username %>" class="dropdown-item"><%= user.this_username %></a>
     <% }); %>
 `;
 
 const following_item_str = `
     <% users.forEach(function(user) { %>
-        <a href="/<%= user.following_username %>" class="dropdown-item"><%= user.this_username %></a>
+        <a href="/<%= user.following_username %>" class="dropdown-item"><%= user.following_username %></a>
     <% }); %>
 `;
 
@@ -55,11 +55,10 @@ $(function (events, handler) {
             }
 
             const data = {
-                this_user_id: user_cookie,
-                poster_user_id: username
+                following_username: username
             };
 
-            $.post('/api/blogpage_backened_follow', data, function (data) {
+            $.post('/api/' + user_cookie + '/follow', data, function (data) {
                 alert('You are now following ' + username + '.');
                 loadFollower();
             }).fail(function (jqXHR) {
