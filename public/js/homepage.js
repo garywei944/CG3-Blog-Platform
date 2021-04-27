@@ -1,7 +1,7 @@
 let post_card_str = `
     <% posts.forEach(function(post) { %>
         <div class="card mt-4 posts">
-            <div class="card-body btn btn-outline-dark">
+            <div class="card-body btn btn-outline-dark text-left">
                 <h5 class="card-title"><%= post.title %></h5>
                 <p class="card-text"><%- post.content %></p>
                 <p class="card-text"><%- new Date(post.post_time).toUTCString().slice(0,16) %></p>
