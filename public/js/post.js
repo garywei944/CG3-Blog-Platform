@@ -29,7 +29,7 @@ $(function () {
                     content: editorData
                 }, function (data) {
                     alert("You have posted successfully");
-                    $(location).attr('href', '/post/' + data)
+                    $(location).attr('href', '/post/' + data.post_id)
                 }).fail(function (jqXHR) {
                     alert("Post failed. Please try again later.");
                     console.error(jqXHR);
