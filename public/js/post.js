@@ -3,17 +3,7 @@ $(function () {
     let user_cookie = Cookies.get("cg3");
 
     ClassicEditor
-        .create($editor[0], {
-            toolbar: ['heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote'],
-            heading: {
-                options: [
-                    {model: 'paragraph', title: 'Paragraph', class: 'ck-heading_paragraph'},
-                    {model: 'heading1', view: 'h1', title: 'Heading 1', class: 'ck-heading_heading1'},
-                    {model: 'heading2', view: 'h2', title: 'Heading 2', class: 'ck-heading_heading2'},
-                    {model: 'heading3', view: 'h3', title: 'Heading 3', class: 'ck-heading_heading3'}
-                ]
-            }
-        })
+        .create($editor[0])
         .then(editor => {
             editor.setData("What's on your mind today?");
 
@@ -29,7 +19,7 @@ $(function () {
                     content: editorData
                 }, function (data) {
                     alert("You have posted successfully");
-                    $(location).attr('href', '/post/' + data)
+                    $(location).attr('href', '/post/' + data.post_id)
                 }).fail(function (jqXHR) {
                     alert("Post failed. Please try again later.");
                     console.error(jqXHR);

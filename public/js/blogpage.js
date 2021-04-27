@@ -56,8 +56,7 @@ $(document).ready(function() {
 
     // click on "read later" - future task
     $("#readLater").click(function() {
-        alert("added to the read-later list")
+        // alert("added to the read-later list")
+        alert("Coming soon...")
     });
 });
-
-

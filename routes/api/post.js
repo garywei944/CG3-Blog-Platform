@@ -23,11 +23,11 @@ router.post('/post', async function (req, res, next) {
     if (checkPost(username, title, content)) {
         try {
             const result = await db.query(query_text, [username, title, content, post_time]);
-            const post_result = await db.query("SELECT * FROM post WHERE username = $1 AND post_time = $2", [username,post_time]);
+            const post_result = await db.query("SELECT * FROM post WHERE username = $1 AND post_time = $2", [username, post_time]);
             let post_id = post_result.rows[0].post_id;
 
             res.status(201);
-            res.send(post_id);
+            res.send({post_id: post_id});
         } catch (err) {
             console.error(err);
             res.status(400);

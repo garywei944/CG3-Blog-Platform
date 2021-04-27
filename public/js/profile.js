@@ -1,7 +1,7 @@
 const post_card_str = `
     <% posts.reverse().forEach(function(post) { %>
         <div class="card mt-4 posts">
-            <div class="card-body btn btn-outline-dark">
+            <div class="card-body btn btn-outline-dark text-left">
                 <h5 class="card-title"><%= post.title %></h5>
                 <p class="card-text"><%- post.content %></p>
                 <p class="card-text"><%- new Date(post.post_time).toUTCString() %></p>
@@ -13,13 +13,13 @@ const post_card_str = `
 
 const follower_item_str = `
     <% users.forEach(function(user) { %>
-        <a href="/<%= user.follower_name %>" class="dropdown-item"><%= user.follower_name %></a>
+        <a href="/<%= user.following_username %>" class="dropdown-item"><%= user.this_username %></a>
     <% }); %>
 `;
 
 const following_item_str = `
     <% users.forEach(function(user) { %>
-        <a href="/<%= user.username %>" class="dropdown-item"><%= user.username %></a>
+        <a href="/<%= user.following_username %>" class="dropdown-item"><%= user.this_username %></a>
     <% }); %>
 `;
 
