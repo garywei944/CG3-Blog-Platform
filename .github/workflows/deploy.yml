@@ -13,7 +13,7 @@ jobs:
         uses: actions/checkout@master
 
       - name: deploy to heroku
-      - uses: akhileshns/heroku-deploy@master
+        uses: akhileshns/heroku-deploy@master
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "stark-tor-10041"
