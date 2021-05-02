@@ -12,7 +12,7 @@ app
     .use(express.static(path.join(__dirname, 'public')))
     .use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
     .use(express.urlencoded({extended: true}))
-    .use(express.json()) // 这个json parser是不是没用到？ express的middleware没有next()的话不会在运行完上面那个urlencoded之后继续运行运行下面这个。
+    .use(express.json())
     .set('views', path.join(__dirname, 'views'))
     .set('view engine', 'ejs')
 
