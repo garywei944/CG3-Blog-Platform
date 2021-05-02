@@ -16,7 +16,7 @@ jobs:
         run: rm -fr .git .github .gitignore files
 
       - name: Generate deployment package
-        run: mkdir gw_upload && zip -r gw_upload/deploy.zip .
+        run: zip -r deploy.zip . && mkdir upload && mv deploy.zip upload
 
       - name: Upload to S3
         uses: shallwefootball/s3-upload-action@master
