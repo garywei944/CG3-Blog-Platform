@@ -25,6 +25,7 @@ jobs:
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
           aws_bucket: ${{ secrets.AWS_S3_BUCKET }}
           source_dir: 'upload'
+          destination_dir: ''
 
 #      - name: sync to s3
 #        uses: jakejarvis/s3-sync-action@master
