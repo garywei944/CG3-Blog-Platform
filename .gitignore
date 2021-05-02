@@ -2,6 +2,7 @@
 *.swp
 .idea
 *.dump
+.elasticbeanstalk/
 
 # Node build artifacts
 node_modules
@@ -253,3 +254,8 @@ dist
 .yarn/install-state.gz
 .pnp.*
 postgres_url.txt
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
