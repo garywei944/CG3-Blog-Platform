@@ -4,6 +4,7 @@
   "description": "CG3 Blog Platform",
   "main": "app.js",
   "scripts": {
+    "start": "node app.js",
     "test": "node test.js"
   },
   "repository": {
@@ -33,7 +34,7 @@
     "tape": "^5.2.2"
   },
   "engines": {
-    "node": "15.x",
+    "node": "16.x",
     "npm": "7.x"
   }
 }

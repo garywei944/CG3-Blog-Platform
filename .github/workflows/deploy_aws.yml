@@ -1,0 +1,30 @@
+name: Deploy to Elastic Beanstalk
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Clean
+        run: rm -fr .git .github .gitignore files
+
+      - name: Generate deployment package
+        run: zip -r deploy.zip .
+
+      - name: Deploy to EB
+        uses: einaregilsson/beanstalk-deploy@v16
+        with:
+          aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          application_name: cg3
+          environment_name: cg3-env
+          version_label: cg3-source
+          region: us-east-1
+          deployment_package: deploy.zip

@@ -12,7 +12,7 @@ app
     .use(express.static(path.join(__dirname, 'public')))
     .use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
     .use(express.urlencoded({extended: true}))
-    .use(express.json({extended: false}))
+    .use(express.json())
     .set('views', path.join(__dirname, 'views'))
     .set('view engine', 'ejs')
 
