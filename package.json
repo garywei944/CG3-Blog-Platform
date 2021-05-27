@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/garywei944/cs326_final_project.git"
+    "url": "git+https://github.com/garywei944/CG3-Blog-Platform.git"
   },
   "keywords": [
     "node",
@@ -19,9 +19,9 @@
   "author": "garywei944",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/garywei944/cs326_final_project/issues"
+    "url": "https://github.com/garywei944/CG3-Blog-Platform/issues"
   },
-  "homepage": "https://github.com/garywei944/cs326_final_project#readme",
+  "homepage": "https://github.com/garywei944/CG3-Blog-Platform#readme",
   "dependencies": {
     "ejs": "^3.1.6",
     "express": "^4.17.1",
