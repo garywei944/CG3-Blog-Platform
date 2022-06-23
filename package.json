@@ -30,7 +30,7 @@
     "serve-favicon": "^2.5.0"
   },
   "devDependencies": {
-    "got": "^11.8.2",
+    "got": "^11.8.5",
     "tape": "^5.2.2"
   },
   "engines": {
